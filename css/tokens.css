@@ -8,11 +8,11 @@
   --p-surface: #f6f7f9;
   --p-surface-hover: #edeef2;
   --p-ink: #111318;
-  --p-muted: #5e6573;
-  --p-accent: #1a4be0;
-  --p-accent-muted: #e8eeff;
+  --p-muted: #454c59;
+  --p-accent: #163fc3;
+  --p-accent-muted: #eaf1ff;
   --p-accent-ink: #ffffff;
-  --p-action: #1a4be0;
+  --p-action: var(--p-accent);
   --p-action-ink: #ffffff;
   --p-border: #e4e7ec;
   --p-code-bg: #13151b;
@@ -33,9 +33,7 @@
   --r-pill: 9999px;
 
   /* Layout Spacing */
-  --wrap-max: 1360px;
-  --wrap-pad: clamp(16px, 4vw, 48px);
-  --section-pad-y: clamp(64px, 8vh, 112px);
+  --p-h3: 21px;
 
   /* Shadows */
   --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
@@ -61,10 +59,22 @@
   --r-lg: 24px;
 }
 
-/* Motion Preferences */
-[data-motion="reduced"] * {
+/* Settings can reduce motion further than the system preference. */
+html[data-motion="reduced"],
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }

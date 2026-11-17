@@ -7,6 +7,7 @@
   'use strict';
 
   var STORAGE_KEY = 'srikanth_portfolio_config_v1';
+  var systemReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   var PRESETS = {
     'canvas-studio': {
@@ -19,8 +20,8 @@
         surfaceHover: '#edeef2',
         ink: '#111318',
         muted: '#454c59',
-        accent: '#1a4be0',
-        accentMuted: '#e8eeff',
+        accent: '#163fc3',
+        accentMuted: '#eaf1ff',
         accentInk: '#ffffff',
         border: '#e4e7ec',
         codeBg: '#13151b',
@@ -47,9 +48,9 @@
         surfaceHover: '#23272e',
         ink: '#f0f2f5',
         muted: '#aab2bd',
-        accent: '#ff4a1f',
-        accentMuted: '#3d1c14',
-        accentInk: '#ffffff',
+        accent: '#ff865c',
+        accentMuted: '#321e18',
+        accentInk: '#121417',
         border: '#2a2f38',
         codeBg: '#0b0d0f',
         codeInk: '#00f5a0'
@@ -76,7 +77,7 @@
         ink: '#f5faf5',
         muted: '#a8b8a9',
         accent: '#c6f19d',
-        accentMuted: '#1f2e1b',
+        accentMuted: '#1b291a',
         accentInk: '#0a0d0a',
         border: '#1f2b20',
         codeBg: '#050805',
@@ -138,21 +139,34 @@
     }
   };
 
-  var state = Object.assign({}, DEFAULT_CONFIG);
+  var state = deepMerge({}, DEFAULT_CONFIG);
 
   function load() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         var parsed = JSON.parse(raw);
-        state = deepMerge(Object.assign({}, DEFAULT_CONFIG), parsed);
+        state = deepMerge(deepMerge({}, DEFAULT_CONFIG), parsed);
         // saved before the contrast pass: lift the old greys to the readable ones
         var LIFT = { '#5e6573': '#454c59', '#8b949e': '#aab2bd', '#829283': '#a8b8a9' };
-        if (state.tokens && LIFT[state.tokens.muted]) state.tokens.muted = LIFT[state.tokens.muted];
+        if (LIFT[state.tokens.muted]) state.tokens.muted = LIFT[state.tokens.muted];
+        var previousPresetColors = {
+          'canvas-studio': { accent: '#1a4be0', accentMuted: '#e8eeff' },
+          'ai-kernel': { accent: '#ff4a1f', accentMuted: '#3d1c14', accentInk: '#ffffff' },
+          'cybernetic-matrix': { accentMuted: '#1f2e1b' }
+        };
+        var previous = previousPresetColors[state.preset];
+        if (previous && Object.keys(previous).every(function (key) {
+          return state.tokens[key] === previous[key];
+        })) {
+          Object.keys(previous).forEach(function (key) {
+            state.tokens[key] = PRESETS[state.preset].tokens[key];
+          });
+        }
       }
     } catch (e) {
       console.warn('Failed to parse portfolio settings, using defaults.', e);
-      state = Object.assign({}, DEFAULT_CONFIG);
+      state = deepMerge({}, DEFAULT_CONFIG);
     }
     applyToDOM();
   }
@@ -278,7 +292,7 @@
   }
 
   function resetToDefault() {
-    state = deepMerge(Object.assign({}, DEFAULT_CONFIG), {});
+    state = deepMerge({}, DEFAULT_CONFIG);
     save();
   }
 
@@ -289,7 +303,7 @@
   function importJSON(jsonStr) {
     try {
       var parsed = JSON.parse(jsonStr);
-      state = deepMerge(Object.assign({}, DEFAULT_CONFIG), parsed);
+      state = deepMerge(deepMerge({}, DEFAULT_CONFIG), parsed);
       save();
       return true;
     } catch (e) {
@@ -304,6 +318,7 @@
   // Expose API
   window.PortfolioSettings = {
     get: function() { return state; },
+    isMotionReduced: function() { return state.motion === 'reduced' || systemReducedMotion.matches; },
     set: function(updates) {
       state = deepMerge(state, updates);
       if (updates.tokens) {
@@ -318,6 +333,8 @@
     importJSON: importJSON,
     reload: load
   };
+
+  systemReducedMotion.addEventListener('change', broadcast);
 
   // Sync across tabs
   window.addEventListener('storage', function(e) {

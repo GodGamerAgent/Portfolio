@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=DM+Mono:wght@400;500&family=Figtree:wght@400..600&family=Funnel+Display:wght@400..700&family=Funnel+Sans:wght@400..600&family=Urbanist:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=DM+Mono:wght@400;500&amp;family=Figtree:wght@400..600&amp;family=Funnel+Display:wght@400..700&amp;family=Funnel+Sans:wght@400..600&amp;family=Urbanist:wght@400..700&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/system.css">
   <link rel="stylesheet" href="css/tokens.css">
@@ -62,46 +62,46 @@
 
           <div class="presets-grid">
             <!-- Preset 1 -->
-            <div class="preset-card is-active" data-preset="canvas-studio">
-              <div class="preset-header">
+            <button class="preset-card is-active" type="button" data-preset="canvas-studio" aria-pressed="true">
+              <span class="preset-header">
                 <span class="preset-title">Direction 1: Studio Canvas</span>
-                <div class="preset-swatches">
+                <span class="preset-swatches">
                   <span class="swatch-circle" style="background:#ffffff;"></span>
-                  <span class="swatch-circle" style="background:#1a4be0;"></span>
-                </div>
-              </div>
-              <p class="preset-desc">
+                  <span class="swatch-circle" style="background:#163fc3;"></span>
+                </span>
+              </span>
+              <span class="preset-desc">
                 Crisp light canvas inspired by Onlines &amp; Figma. Electric blue accents, dot-matrix, and multiplayer peer cursors.
-              </p>
-            </div>
+              </span>
+            </button>
 
             <!-- Preset 2 -->
-            <div class="preset-card" data-preset="ai-kernel">
-              <div class="preset-header">
+            <button class="preset-card" type="button" data-preset="ai-kernel" aria-pressed="false">
+              <span class="preset-header">
                 <span class="preset-title">Direction 2: AI Lab Console</span>
-                <div class="preset-swatches">
+                <span class="preset-swatches">
                   <span class="swatch-circle" style="background:#121417;"></span>
-                  <span class="swatch-circle" style="background:#ff4a1f;"></span>
-                </div>
-              </div>
-              <p class="preset-desc">
+                  <span class="swatch-circle" style="background:#ff865c;"></span>
+                </span>
+              </span>
+              <span class="preset-desc">
                 Dark graphite terminal styling with safety orange telemetry, sharp technical borders, and blueprint grid.
-              </p>
-            </div>
+              </span>
+            </button>
 
             <!-- Preset 3 -->
-            <div class="preset-card" data-preset="cybernetic-matrix">
-              <div class="preset-header">
+            <button class="preset-card" type="button" data-preset="cybernetic-matrix" aria-pressed="false">
+              <span class="preset-header">
                 <span class="preset-title">Direction 3: Cybernetic</span>
-                <div class="preset-swatches">
+                <span class="preset-swatches">
                   <span class="swatch-circle" style="background:#0a0d0a;"></span>
                   <span class="swatch-circle" style="background:#c6f19d;"></span>
-                </div>
-              </div>
-              <p class="preset-desc">
+                </span>
+              </span>
+              <span class="preset-desc">
                 Obsidian depth with luminous acid lime, Bricolage Grotesque typography, and organic halftone ripples.
-              </p>
-            </div>
+              </span>
+            </button>
           </div>
         </div>
 
@@ -191,7 +191,7 @@
 
             <div class="control-item">
               <span class="control-label">Corner Radius</span>
-              <div style="display:flex;gap:16px;margin-top:6px;">
+              <div class="radio-options">
                 <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
                   <input type="radio" name="setting-radius" value="sharp"> Sharp (0px)
                 </label>
@@ -410,7 +410,7 @@
             Export your customized portfolio state as a portable JSON snapshot or import an existing configuration.
           </p>
 
-          <textarea id="setting-json-area" class="json-area" placeholder="Click 'Export Configuration' to generate JSON snapshot, or paste configuration JSON here to import..."></textarea>
+          <textarea id="setting-json-area" class="json-area" aria-label="Portfolio settings JSON" placeholder="Click 'Export Configuration' to generate JSON snapshot, or paste configuration JSON here to import..."></textarea>
 
           <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
             <button id="btn-export-json" class="btn btn-secondary" type="button">
