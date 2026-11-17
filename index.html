@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Srikanth Nagendran — Student Developer</title>
-  <meta name="description" content="Srikanth Nagendran studies Computer Science and AI at Newton School of Technology and builds local AI tools, Android apps and Python utilities.">
+  <title>Srikanth Nagendran: student developer portfolio</title>
+  <meta name="description" content="Srikanth Nagendran studies Computer Science and AI at Newton School of Technology and learns by building: local AI tools on Gemma 4, Android apps in Kotlin and MCP servers in Python.">
 
   <!-- Open Graph & Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Srikanth Nagendran — Student Developer">
-  <meta property="og:description" content="Six tools by Srikanth Nagendran, including local AI tools, Android apps and Python utilities.">
+  <meta property="og:title" content="Srikanth Nagendran: student developer portfolio">
+  <meta property="og:description" content="Six projects on GitHub: local AI tools on Gemma 4, Android apps in Kotlin and MCP servers in Python.">
+  <meta property="og:image" content="assets/layout/tiles/desktop-sec-01-a.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/icons/demo/python.svg" type="image/svg+xml">
   <meta name="theme-color" content="#ffffff">
-  <meta name="color-scheme" content="light dark">
 
   <meta name="site-kind" content="software">
   <meta name="page-type" content="software">
@@ -20,16 +21,37 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=DM+Mono:wght@400;500&amp;family=Figtree:wght@400..600&amp;family=Funnel+Display:wght@400..700&amp;family=Funnel+Sans:wght@400..600&amp;family=Urbanist:wght@400..700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=DM+Mono:wght@400;500&family=Figtree:wght@400..600&family=Funnel+Display:wght@400..700&family=Funnel+Sans:wght@400..600&family=Urbanist:wght@400..700&display=swap" rel="stylesheet">
 
+  <!-- System & Dynamic Stylesheets -->
   <link rel="stylesheet" href="assets/system.css">
+  <link rel="stylesheet" href="assets/ui/cards.css">
+  <link rel="stylesheet" href="assets/motion/motion.css">
+  <link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+  <link rel="stylesheet" href="assets/layout/layout.css">
+  <link rel="stylesheet" href="assets/icons/icon.css">
+
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/layout-portfolio.css">
   <link rel="stylesheet" href="css/dynamic-hero.css">
   <link rel="stylesheet" href="css/components.css">
 
+  <script>
+    document.documentElement.classList.add('m-enter', 'mo-js');
+    setTimeout(function() { document.documentElement.classList.add('m-enter-done'); }, 700);
+    setTimeout(function() { document.documentElement.classList.add('mo-safe'); }, 2500);
+  </script>
+  <link rel="modulepreload" href="assets/moments/moments.js">
+  <link rel="modulepreload" href="assets/moments/lib.js">
+  <link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
 </head>
 <body class="home">
+  <!--
+    kind: software (a student developer's portfolio). The page shows the six real repositories at
+    github.com/GodGamerAgent and the owner's own story. Moment: word-highlight (the statement).
+    Hero: split, the words left and a live code window right. Palette: canvas-studio (light, one blue accent).
+  -->
+
   <!-- Top Navigation -->
   <header class="site-nav">
     <div class="wrap nav-inner">
@@ -38,6 +60,11 @@
         <span class="brand-avatar" aria-hidden="true">S</span>
         <span>Srikanth</span>
       </a>
+
+      <div class="nav-status-pill">
+        <span class="status-dot"></span>
+        <span>Newton School of Technology</span>
+      </div>
 
       <nav aria-label="Main">
         <ul class="nav-links">
@@ -60,24 +87,36 @@
     </div>
   </header>
 
-  <main id="main-content" tabindex="-1">
+  <main id="main-content">
 
     <!-- 1. HERO -->
-    <section id="sec-hero" class="hero sec-hero">
+    <section id="sec-hero" class="hero sec-hero" data-enter>
       <canvas id="canvas-grid" class="canvas-grid-bg" aria-hidden="true"></canvas>
       <div id="multiplayer-cursors-layer" class="multiplayer-layer" aria-hidden="true"></div>
 
       <div class="wrap">
-        <div class="split-grid hero-grid">
+        <div class="hero-grid">
           <div class="hero-text">
-            <p class="sec-category">Student developer · India</p>
-            <h1 class="hero-h1">Srikanth Nagendran</h1>
-            <p class="hero-lead">I study Computer Science &amp; AI at Newton School of Technology. I learn by building things, getting stuck and working out the fix.</p>
+            <div class="hero-badge-row">
+              <span class="hero-role-pill">CS &amp; AI student, Newton School of Technology</span>
+            </div>
+
+            <h1 class="hero-h1">Srikanth Nagendran, a student developer who learns by building.</h1>
+
+            <p class="hero-lead">
+              I ship local AI tools on Gemma 4, Android apps in Kotlin and MCP servers in Python. When one breaks, I get stuck, find the bug and fix it. That loop is how I learn.
+            </p>
 
             <div class="hero-actions">
-              <a href="#sec-projects" class="btn btn-primary">View projects <span aria-hidden="true">↓</span></a>
+              <a href="#sec-projects" class="btn btn-primary">View projects</a>
               <a href="#sec-story" class="btn btn-secondary">Read my story</a>
             </div>
+
+            <ul class="hero-proof-line" aria-label="At a glance">
+              <li class="hero-proof-item">6 projects on GitHub</li>
+              <li class="hero-proof-item">2 Gemma 4 hackathon builds</li>
+              <li class="hero-proof-item">Kotlin, TypeScript, Python</li>
+            </ul>
           </div>
 
           <div class="hero-canvas-art">
@@ -88,21 +127,21 @@
               <span class="selection-handle handle-br"></span>
               <span class="selection-handle handle-tc"></span>
               <span class="selection-handle handle-bc"></span>
-              <div class="selection-hud" aria-hidden="true"></div>
+              <div class="selection-hud" aria-hidden="true">580 × 390</div>
 
-              <div class="code-window">
-                <div class="window-header selection-drag-handle">
+              <div class="code-window" data-ui="code">
+                <div class="window-header selection-drag-handle" title="Drag to move the frame">
                   <div class="window-dots" aria-hidden="true">
                     <span class="dot dot-red"></span>
                     <span class="dot dot-yellow"></span>
                     <span class="dot dot-green"></span>
                   </div>
                   <div class="window-tabs" role="group" aria-label="Code samples">
-                    <button class="code-lang-tab is-active" data-lang="python" type="button" aria-pressed="true">quorum.py</button>
-                    <button class="code-lang-tab" data-lang="kotlin" type="button" aria-pressed="false">Alarm.kt</button>
+                    <button class="code-lang-tab is-active" data-lang="python" type="button">quorum.py</button>
+                    <button class="code-lang-tab" data-lang="kotlin" type="button">Alarm.kt</button>
                   </div>
                 </div>
-                <div class="window-body"><code id="hero-code-typing"></code><span class="typing-cursor" aria-hidden="true"></span></div>
+                <div class="window-body"><code id="hero-code-typing"></code><span class="typing-cursor"></span></div>
               </div>
             </div>
           </div>
@@ -110,124 +149,202 @@
       </div>
     </section>
 
-    <section id="sec-statement" class="sec-statement" aria-label="How I work">
+    <!-- 2. DEALT MOMENT: word-highlight, one statement in its own section -->
+    <section id="sec-statement" class="statement sec-statement" data-moment="word-highlight" aria-label="How I work">
       <div class="wrap">
-        <p class="sec-category">How I work</p>
-        <p class="statement-text">I learn by building, getting stuck and finding the fix. Life has had its ups and downs. I keep the balance <strong>net positive</strong> and live without regrets.</p>
+        <p class="t-label sec-category">How I work</p>
+        <p class="mo-wh__text">I build to learn: ship something, get stuck, find the bug and fix it. Life has had its ups and downs, but I keep the overall balance <strong>net positive</strong> and live it without regrets.</p>
       </div>
     </section>
 
-    <section id="sec-projects" class="sec-projects">
+    <!-- 3. PROJECTS: the six repositories -->
+    <section id="sec-projects" class="sec-projects" style="--h: 2">
       <div class="wrap">
         <div class="sec-header">
-          <h2 class="sec-title">Projects</h2>
-          <p class="sec-desc">Six tools I built, from private meeting notes to an alarm for heavy sleepers.</p>
+          <p class="sec-category">Projects</p>
+          <h2 class="sec-title">Six projects, each one a problem I wanted gone.</h2>
+          <p class="sec-desc">Two were built in a night at Hacktoberfest Hack Day 2026. The rest started as something that annoyed me.</p>
         </div>
 
         <div class="projects-grid">
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Local meeting notes</span>
-              <span>Record tab → Transcribe → Extract decisions</span>
+          <article class="project-card">
+            <div class="project-preview" data-ui="transcript" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">meeting_notes.md</span><span>Gemma 4 · on-device</span></div>
+                <div class="mock-body">[00:12:41] you: let's ship Friday<br>Decision: release on Friday<br>Owner: you · due Thursday</div>
+                <div class="mock-green">✓ audio never left this laptop</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">Hacktoberfest Hack Day · Oct 2026</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">Hackathon · Oct 2026</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/typescript.svg" alt="TypeScript" class="lang-icon">
+                  <img src="assets/icons/demo/python.svg" alt="Python" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">Quorum</h3>
-              <p class="project-desc">A Chrome extension records the tab. Whisper large-v3-turbo transcribes on-device, then Gemma 4 in LM Studio extracts decisions and action items with owners and answers questions.</p>
-              <p class="project-tech">TypeScript · Python</p>
-              <a href="https://github.com/GodGamerAgent/MeetingShield" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the Quorum repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">Private meeting notes. A Chrome extension records the tab, Whisper transcribes it on-device, and Gemma 4 writes down decisions and who owns each next step.</p>
+              <a href="https://github.com/GodGamerAgent/MeetingShield" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the Quorum repository on GitHub">View repository →</a>
             </div>
           </article>
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Documentation diff</span>
-              <span>Find stale lines → Rewrite → Open PR</span>
+
+          <article class="project-card">
+            <div class="project-preview" data-ui="diff" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">README.md</span><span>drift: high</span></div>
+                <div class="mock-body"><span class="mock-red">- npm start --port 3000</span><br><span class="mock-green">+ npm start --listen 3000</span><br>Accept · Reject</div>
+                <div class="mock-green">✓ patch ready as a pull request</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">Hacktoberfest Hack Day · Oct 2026</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">Hackathon · Oct 2026</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/typescript.svg" alt="TypeScript" class="lang-icon">
+                  <img src="assets/icons/demo/javascript.svg" alt="JavaScript" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">DocDrift AI</h3>
-              <p class="project-desc">Catches stale README and API docs when flags, routes or environment variables change. Gemma 4 rewrites the lines in a side-by-side diff and opens a GitHub PR.</p>
-              <p class="project-tech">TypeScript · Next.js</p>
-              <a href="https://github.com/GodGamerAgent/DocDrift" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the DocDrift AI repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">Finds READMEs that no longer match the code: renamed flags, changed routes, new env variables. Gemma 4 rewrites the stale lines and opens a pull request.</p>
+              <a href="https://github.com/GodGamerAgent/DocDrift" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the DocDrift repository on GitHub">View repository →</a>
             </div>
           </article>
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Alarm dismissal</span>
-              <span>Wake-up challenge → Awake check</span>
+
+          <article class="project-card">
+            <div class="project-preview" data-ui="alarm" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">06:30 · ringing</span><span>challenge 2 of 3</span></div>
+                <div class="mock-body">Solve to dismiss: 47 × 6 = ?<br>Power menu: blocked<br>Snoozes left: 0</div>
+                <div class="mock-green">✓ awake check in 5 minutes</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">Android app</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">Android app</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/kotlin.svg" alt="Kotlin" class="lang-icon">
+                  <img src="assets/icons/demo/android.svg" alt="Android" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">I Can't Wake Up!</h3>
-              <p class="project-desc">An alarm for heavy sleepers with eight challenges, including maths, memory, Simon says and a QR scan in another room. It blocks the power menu and checks if you stay awake.</p>
-              <p class="project-tech">Kotlin · Compose</p>
-              <a href="https://github.com/GodGamerAgent/Brainy-Alarm" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the I Can't Wake Up! repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">An alarm for heavy sleepers that you cannot cheat. Eight wake-up challenges, from maths to scanning a QR code in another room, and no way to power the phone off.</p>
+              <a href="https://github.com/GodGamerAgent/Brainy-Alarm" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the I Can't Wake Up repository on GitHub">View repository →</a>
             </div>
           </article>
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Provider failover</span>
-              <span>Gemini → Claude → Groq → DeepSeek</span>
+
+          <article class="project-card">
+            <div class="project-preview" data-ui="routes" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">reply route</span><span>tone: casual</span></div>
+                <div class="mock-body">Gemini 2.5 Flash → HTTP 429<br>Claude 3.5 Haiku → ok<br>Groq · DeepSeek on standby</div>
+                <div class="mock-green">✓ reply typed into the chat</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">Android app</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">Android app</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/kotlin.svg" alt="Kotlin" class="lang-icon">
+                  <img src="assets/icons/demo/android.svg" alt="Android" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">Voice Assist AI</h3>
-              <p class="project-desc">A floating Android overlay for system-wide dictation and tone-aware replies. Requests fall through to the next provider on failure. API keys are encrypted in Android KeyStore.</p>
-              <p class="project-tech">Kotlin</p>
-              <a href="https://github.com/GodGamerAgent/Voice-Assistant" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the Voice Assist AI repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">Voice dictation and tone-aware replies in any Android app, from a floating overlay. When one AI provider fails, the request falls through to the next.</p>
+              <a href="https://github.com/GodGamerAgent/Voice-Assistant" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the Voice Assist AI repository on GitHub">View repository →</a>
             </div>
           </article>
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Wardrobe tools</span>
-              <span>Catalogue → Track laundry → Prepare try-on</span>
+
+          <article class="project-card">
+            <div class="project-preview" data-ui="tool-call" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">MCP tool call</span><span>wardrobe.db</span></div>
+                <div class="mock-body">get_clean_items(category="top")<br>→ 4 items · formality 3–7<br>try_on(garments=[2, 9], avatar="me")</div>
+                <div class="mock-green">✓ preview ready in chat</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">MCP server</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">MCP server</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/python.svg" alt="Python" class="lang-icon">
+                  <img src="assets/icons/demo/sqlite.svg" alt="SQLite" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">Wardrobe Brainy</h3>
-              <p class="project-desc">A FastMCP and Starlette server that lets AI assistants like Claude catalogue clothes, track laundry and prepare virtual try-ons.</p>
-              <p class="project-tech">Python · SQLite</p>
-              <a href="https://github.com/GodGamerAgent/Wardrobe-Brainy" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the Wardrobe Brainy repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">Lets an AI assistant like Claude catalogue your clothes, track what is in the laundry and pick clean outfits to try on, through Model Context Protocol tools.</p>
+              <a href="https://github.com/GodGamerAgent/Wardrobe-Brainy" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the Wardrobe Brainy repository on GitHub">View repository →</a>
             </div>
           </article>
-          <article class="panel-card project-card">
-            <div class="project-preview" aria-hidden="true">
-              <span class="preview-label">Download workflow</span>
-              <span>Resolve link → Download → Move file</span>
+
+          <article class="project-card">
+            <div class="project-preview" data-ui="watcher" aria-hidden="true">
+              <div class="project-preview-mock">
+                <div class="mock-head"><span class="mock-blue">watcher loop</span><span>launch 4</span></div>
+                <div class="mock-body">track.flac.crdownload … waiting<br>track.flac complete<br>moved to Complete_Download/</div>
+                <div class="mock-green">✓ no thread left blocked</div>
+              </div>
             </div>
             <div class="project-body">
-              <p class="project-meta">Command-line tool</p>
+              <div class="project-meta-row">
+                <span class="project-type-tag">Command-line tool</span>
+                <span class="project-langs">
+                  <img src="assets/icons/demo/python.svg" alt="Python" class="lang-icon">
+                  <img src="assets/icons/demo/selenium.svg" alt="Selenium" class="lang-icon">
+                </span>
+              </div>
               <h3 class="project-title">MusicDownloaderCLI</h3>
-              <p class="project-desc">A Python CLI that resolves a song link, downloads through a headless browser with SeleniumBase, recovers from stalls and moves finished hi-res files to your folder.</p>
-              <p class="project-tech">Python · SeleniumBase</p>
-              <a href="https://github.com/GodGamerAgent/Hi-Res-MusicDownloader" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View the MusicDownloaderCLI repository on GitHub">View repository <span aria-hidden="true">↗</span></a>
+              <p class="project-desc">Paste a song link and it finds the hi-res file, drives a headless browser to fetch it, recovers from stalls, and moves each finished track to your folder.</p>
+              <a href="https://github.com/GodGamerAgent/Hi-Res-MusicDownloader" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View the MusicDownloaderCLI repository on GitHub">View repository →</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- 4. STACK: languages by bytes across the six repositories, and the tools behind them -->
     <section id="sec-stack" class="sec-stack">
       <div class="wrap">
-        <div class="split-grid">
+        <div class="stack-split">
           <div class="stack-copy">
-            <h2 class="sec-title">Tech stack</h2>
-            <p class="sec-desc">I use Kotlin for Android, TypeScript for the web and Python for local AI and automation.</p>
+            <div class="sec-header">
+              <p class="sec-category">Stack</p>
+              <h2 class="sec-title">The languages and tools in my repositories.</h2>
+              <p class="sec-desc">Half my code is Kotlin for Android; the AI tools run in TypeScript and Python. The chart counts bytes across all six repositories.</p>
+            </div>
+            <div class="stack-groups">
+              <div class="stack-group">
+                <h3 class="stack-cat-title">Android</h3>
+                <ul class="stack-chips"><li class="stack-chip"><img src="assets/icons/demo/kotlin.svg" alt="" class="stack-icon">Kotlin &amp; Jetpack Compose</li><li class="stack-chip"><img src="assets/icons/demo/android.svg" alt="" class="stack-icon">Accessibility &amp; overlays</li><li class="stack-chip"><img src="assets/icons/demo/sqlite.svg" alt="" class="stack-icon">Room &amp; SQLite</li></ul>
+              </div>
+              <div class="stack-group">
+                <h3 class="stack-cat-title">AI &amp; local models</h3>
+                <ul class="stack-chips"><li class="stack-chip"><img src="assets/icons/demo/hugging-face.svg" alt="" class="stack-icon">Gemma 4 in LM Studio</li><li class="stack-chip"><img src="assets/icons/demo/openai.svg" alt="" class="stack-icon">Whisper</li><li class="stack-chip"><img src="assets/icons/demo/python.svg" alt="" class="stack-icon">MCP with FastMCP</li></ul>
+              </div>
+              <div class="stack-group">
+                <h3 class="stack-cat-title">Web &amp; automation</h3>
+                <ul class="stack-chips"><li class="stack-chip"><img src="assets/icons/demo/nextjs.svg" alt="" class="stack-icon">Next.js</li><li class="stack-chip"><img src="assets/icons/demo/fastapi.svg" alt="" class="stack-icon">FastAPI</li><li class="stack-chip"><img src="assets/icons/demo/selenium.svg" alt="" class="stack-icon">SeleniumBase</li></ul>
+              </div>
+            </div>
           </div>
-          <div class="panel-card stack-panel">
-            <div class="stack-group">
-              <h3>Android</h3>
-              <p>Kotlin, Jetpack Compose, Room, Android KeyStore</p>
+
+          <figure class="lang-chart">
+            <svg class="lang-chart__svg lang-chart__svg--wide" viewBox="0 0 560 318" role="img" aria-label="Code by language: Kotlin 51%, TypeScript 31%, Python 12.2%, JavaScript 3.4%, CSS 1.4%, HTML 0.7%, Shell 0.4%">
+              <g transform="translate(0,0)"><title>Kotlin: 910,375 bytes (51.0%)</title><text x="0" y="23" class="lc-name">Kotlin</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="360.0" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">51.0%</text></g><g transform="translate(0,46)"><title>TypeScript: 552,841 bytes (31.0%)</title><text x="0" y="23" class="lc-name">TypeScript</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="218.8" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">31.0%</text></g><g transform="translate(0,92)"><title>Python: 216,997 bytes (12.2%)</title><text x="0" y="23" class="lc-name">Python</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="86.1" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">12.2%</text></g><g transform="translate(0,138)"><title>JavaScript: 60,315 bytes (3.4%)</title><text x="0" y="23" class="lc-name">JavaScript</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="24.0" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">3.4%</text></g><g transform="translate(0,184)"><title>CSS: 24,866 bytes (1.4%)</title><text x="0" y="23" class="lc-name">CSS</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="9.9" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">1.4%</text></g><g transform="translate(0,230)"><title>HTML: 11,900 bytes (0.7%)</title><text x="0" y="23" class="lc-name">HTML</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="8" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">0.7%</text></g><g transform="translate(0,276)"><title>Shell: 7,019 bytes (0.4%)</title><text x="0" y="23" class="lc-name">Shell</text><rect x="120" y="8" width="360" height="22" rx="4" class="lc-track"/><rect x="120" y="8" width="8" height="22" rx="4" class="lc-bar"/><text x="560" y="23" class="lc-val">0.4%</text></g>
+            </svg>
+            <svg class="lang-chart__svg lang-chart__svg--narrow" viewBox="0 0 342 318" role="img" aria-label="Code by language: Kotlin 51%, TypeScript 31%, Python 12.2%, JavaScript 3.4%, CSS 1.4%, HTML 0.7%, Shell 0.4%">
+              <g transform="translate(0,0)"><title>Kotlin: 910,375 bytes (51.0%)</title><text x="0" y="23" class="lc-name">Kotlin</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="180.0" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">51.0%</text></g><g transform="translate(0,46)"><title>TypeScript: 552,841 bytes (31.0%)</title><text x="0" y="23" class="lc-name">TypeScript</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="109.4" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">31.0%</text></g><g transform="translate(0,92)"><title>Python: 216,997 bytes (12.2%)</title><text x="0" y="23" class="lc-name">Python</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="43.1" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">12.2%</text></g><g transform="translate(0,138)"><title>JavaScript: 60,315 bytes (3.4%)</title><text x="0" y="23" class="lc-name">JavaScript</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="12.0" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">3.4%</text></g><g transform="translate(0,184)"><title>CSS: 24,866 bytes (1.4%)</title><text x="0" y="23" class="lc-name">CSS</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="8" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">1.4%</text></g><g transform="translate(0,230)"><title>HTML: 11,900 bytes (0.7%)</title><text x="0" y="23" class="lc-name">HTML</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="8" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">0.7%</text></g><g transform="translate(0,276)"><title>Shell: 7,019 bytes (0.4%)</title><text x="0" y="23" class="lc-name">Shell</text><rect x="100" y="8" width="180" height="22" rx="4" class="lc-track"/><rect x="100" y="8" width="8" height="22" rx="4" class="lc-bar"/><text x="342" y="23" class="lc-val">0.4%</text></g>
+            </svg>
+            <div class="sr-only">
+              <table>
+                <caption>Code by language across six repositories, in bytes</caption>
+                <thead><tr><th scope="col">Language</th><th scope="col">Bytes</th><th scope="col">Share</th></tr></thead>
+                <tbody>
+                  <tr><td>Kotlin</td><td>910,375</td><td>51.0%</td></tr><tr><td>TypeScript</td><td>552,841</td><td>31.0%</td></tr><tr><td>Python</td><td>216,997</td><td>12.2%</td></tr><tr><td>JavaScript</td><td>60,315</td><td>3.4%</td></tr><tr><td>CSS</td><td>24,866</td><td>1.4%</td></tr><tr><td>HTML</td><td>11,900</td><td>0.7%</td></tr><tr><td>Shell</td><td>7,019</td><td>0.4%</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="stack-group">
-              <h3>Local AI</h3>
-              <p>Whisper large-v3-turbo, Gemma 4, LM Studio</p>
-            </div>
-            <div class="stack-group">
-              <h3>Web, tools and data</h3>
-              <p>TypeScript, Next.js, Python, FastAPI, FastMCP, Starlette, SQLite, SeleniumBase</p>
-            </div>
-          </div>
+          </figure>
         </div>
       </div>
     </section>
@@ -235,19 +352,26 @@
     <!-- 5. STORY: why Newton School of Technology, and the bugs fixed by building -->
     <section id="sec-story" class="sec-story">
       <div class="wrap">
-        <div class="split-grid">
+        <div class="story-split">
           <div class="story-copy">
-            <h2 class="sec-title">Why I chose NST</h2>
+            <p class="sec-category">Story</p>
+            <h2 class="sec-title">My bug log, and why I chose Newton School of Technology.</h2>
             <p class="sec-desc">I joined Newton School of Technology to get away from rote learning. I learn by building something, getting stuck and working out the fix.</p>
-            <p class="sec-desc">I apply the same habit to myself. I reflect on what I do, look for the next bug in how I think and work on fixing it.</p>
+            <p class="sec-desc">I treat myself the same way. I keep looking for the next bug in how I think, and I fix it as soon as I find it.</p>
           </div>
 
-          <div class="panel-card bug-log">
-            <h3 class="bug-log__head">My bug log</h3>
-            <ul class="bug-log__list">
-              <li class="bug"><span class="bug__state">Closed</span><div><p class="bug__title">Rote learning</p><p class="bug__fix">Joined NST to learn by building.</p></div></li>
-              <li class="bug"><span class="bug__state">Open</span><div><p class="bug__title">The next bug in how I think</p><p class="bug__fix">Still introspecting.</p></div></li>
-            </ul>
+          <div class="bug-log" data-ui="issues" role="group" aria-label="Bug log">
+            <div class="bug-log__head">
+              <span>srikanth / life</span>
+              <span>4 closed · 1 open</span>
+            </div>
+            <ol class="bug-log__list">
+              <li class="bug"><span class="bug__state bug__state--closed">Closed</span><span class="bug__title">Learning by memorising, not building</span><span class="bug__fix">Fixed: moved to Newton School of Technology</span></li>
+              <li class="bug"><span class="bug__state bug__state--closed">Closed</span><span class="bug__title">Heavy sleepers switch alarms off half-asleep</span><span class="bug__fix">Fixed: built I Can't Wake Up!</span></li>
+              <li class="bug"><span class="bug__state bug__state--closed">Closed</span><span class="bug__title">Meeting audio sent to a cloud note-taker</span><span class="bug__fix">Fixed: built Quorum, which runs on-device</span></li>
+              <li class="bug"><span class="bug__state bug__state--closed">Closed</span><span class="bug__title">READMEs drift away from the code</span><span class="bug__fix">Fixed: built DocDrift AI at Hack Day</span></li>
+              <li class="bug"><span class="bug__state bug__state--open">Open</span><span class="bug__title">The next bug in how I think</span><span class="bug__fix">Still introspecting</span></li>
+            </ol>
           </div>
         </div>
       </div>
@@ -256,10 +380,11 @@
     <!-- 6. TERMINAL -->
     <section id="sec-terminal" class="sec-terminal">
       <div class="wrap">
-        <div class="split-grid">
+        <div class="terminal-split">
           <div class="terminal-copy">
-            <h2 class="sec-title">Interactive terminal</h2>
-            <p class="sec-desc">Type a command and press Enter.</p>
+            <p class="sec-category">Terminal</p>
+            <h2 class="sec-title">Ask the terminal about my projects.</h2>
+            <p class="sec-desc">Type a command and press Enter. It answers from the same facts as this page.</p>
             <ul class="term-commands">
               <li><code>projects</code> the six repositories</li>
               <li><code>stack</code> languages and tools</li>
@@ -268,7 +393,7 @@
             </ul>
           </div>
 
-          <div class="panel-card terminal-window">
+          <div class="terminal-window" data-ui="terminal">
             <div class="terminal-header">
               <span class="terminal-title">srikanth@nst: ~ (zsh)</span>
               <div class="window-dots" aria-hidden="true">
@@ -281,12 +406,14 @@
             <div id="term-body" class="terminal-body" aria-live="polite">
               <div class="term-line"><span class="term-prompt">srikanth@nst:~$</span> whoami</div>
               <div class="term-line term-response">Srikanth Nagendran · CS &amp; AI student at Newton School of Technology</div>
+              <div class="term-line"><span class="term-prompt">srikanth@nst:~$</span> ls projects</div>
+              <div class="term-line term-response"><span class="term-cyan">Quorum/  DocDrift/  I-Cant-Wake-Up/  Voice-Assist/  Wardrobe-Brainy/  MusicDownloaderCLI/</span></div>
               <div class="term-line"><span class="term-dim">Type <span class="term-cyan">help</span> for every command.</span></div>
             </div>
 
             <div class="terminal-input-row">
-              <label for="term-input" class="term-prompt" aria-hidden="true">srikanth@nst:~$</label>
-              <input id="term-input" class="term-input" aria-label="Terminal command" type="text" autocomplete="off" spellcheck="false" placeholder="projects">
+              <label for="term-input" class="term-prompt">srikanth@nst:~$</label>
+              <input id="term-input" class="term-input" type="text" autocomplete="off" spellcheck="false" placeholder="projects">
             </div>
           </div>
         </div>
@@ -298,15 +425,26 @@
   <!-- CLOSING: contact and footer in one screen -->
   <footer id="sec-contact" class="closing site-footer">
     <div class="wrap">
-      <div class="split-grid closing-grid">
+      <div class="closing-grid">
         <div class="closing-copy">
-          <h2 class="sec-title">Contact</h2>
+          <p class="sec-category">Contact</p>
+          <h2 class="sec-title">Contact me on GitHub about internships and hackathon teams.</h2>
+          <p class="sec-desc">All six projects are public. Open an issue on any of them, or follow along as the next one ships.</p>
+          <div class="hero-actions">
+            <a href="https://github.com/GodGamerAgent" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <img src="assets/icons/demo/github.svg" alt="" class="btn-icon">Open my GitHub
+            </a>
+          </div>
         </div>
 
-        <address class="contact-links">
-          <a href="mailto:SrikanthofficialEH@gmail.com" class="btn btn-primary">SrikanthofficialEH@gmail.com</a>
-          <a href="https://github.com/GodGamerAgent" class="btn btn-secondary">GitHub <span aria-hidden="true">↗</span></a>
-        </address>
+        <ul class="repo-list" aria-label="Repositories">
+          <li><a href="https://github.com/GodGamerAgent/MeetingShield" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/MeetingShield</span><span class="repo-lang">TypeScript</span></a></li>
+          <li><a href="https://github.com/GodGamerAgent/DocDrift" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/DocDrift</span><span class="repo-lang">TypeScript</span></a></li>
+          <li><a href="https://github.com/GodGamerAgent/Brainy-Alarm" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/Brainy-Alarm</span><span class="repo-lang">Kotlin</span></a></li>
+          <li><a href="https://github.com/GodGamerAgent/Voice-Assistant" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/Voice-Assistant</span><span class="repo-lang">Kotlin</span></a></li>
+          <li><a href="https://github.com/GodGamerAgent/Wardrobe-Brainy" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/Wardrobe-Brainy</span><span class="repo-lang">Python</span></a></li>
+          <li><a href="https://github.com/GodGamerAgent/Hi-Res-MusicDownloader" target="_blank" rel="noopener noreferrer" class="repo-link"><img src="assets/icons/demo/github.svg" alt="" class="stack-icon"><span>GodGamerAgent/Hi-Res-MusicDownloader</span><span class="repo-lang">Python</span></a></li>
+        </ul>
       </div>
 
       <div class="footer-inner">
@@ -327,5 +465,6 @@
   <script src="js/interactive-selection.js"></script>
   <script src="js/terminal-typing.js"></script>
   <script src="js/main.js"></script>
+  <script type="module" src="assets/moments/moments.js"></script>
 </body>
 </html>

@@ -24,10 +24,8 @@
     window.addEventListener('resize', debounce(resize, 150));
 
     // Track mouse on canvas container or hero
-    var settings = window.PortfolioSettings;
     var hero = document.getElementById('sec-hero') || document.body;
     hero.addEventListener('mousemove', function(e) {
-      if (settings.isMotionReduced()) return;
       var rect = canvas.getBoundingClientRect();
       mouse.targetX = e.clientX - rect.left;
       mouse.targetY = e.clientY - rect.top;
@@ -50,8 +48,8 @@
     }
 
     window.addEventListener('portfolio:settings-changed', function() {
-      if (settings.isMotionReduced()) mouse.active = false;
-      if (!animFrameId) loop();
+      // Redraw immediately when settings change
+      draw();
     });
 
     loop();
@@ -75,7 +73,8 @@
       return;
     }
 
-    if (window.PortfolioSettings.isMotionReduced()) {
+    var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { motion: 'full' };
+    if (cfg.motion === 'reduced') {
       draw();
       animFrameId = null;
       return;

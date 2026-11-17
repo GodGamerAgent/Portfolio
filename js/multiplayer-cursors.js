@@ -11,13 +11,12 @@
   var isRunning = false;
   var rafId = null;
 
-  var desktop = window.matchMedia('(min-width: 1024px)');
   var PEER_DATA = [
-    { name: 'Python', color: '#1741bd', pathScale: 1.0, offset: 0 },
-    { name: 'Kotlin', color: '#8a4614', pathScale: 0.9, offset: 1.5 },
-    { name: 'TypeScript', color: '#14614c', pathScale: 1.1, offset: 3.2 },
-    { name: 'SQLite', color: '#334b6a', pathScale: 0.85, offset: 4.8 },
-    { name: 'Gemma 4', color: '#a23430', pathScale: 1.05, offset: 2.1 }
+    { name: 'Srikanth (Dev)', color: '#1a4be0', pathScale: 1.0, offset: 0 },
+    { name: 'NST AI Mentor', color: '#f59e0b', pathScale: 0.9, offset: 1.5 },
+    { name: 'AI Copilot', color: '#10b981', pathScale: 1.1, offset: 3.2 },
+    { name: 'Code Reviewer', color: '#ff4a1f', pathScale: 0.85, offset: 4.8 },
+    { name: 'Kernel Bot', color: '#8b5cf6', pathScale: 1.05, offset: 2.1 }
   ];
 
   function init() {
@@ -26,8 +25,11 @@
 
     setupCursors();
 
-    window.addEventListener('portfolio:settings-changed', setupCursors);
-    desktop.addEventListener('change', setupCursors);
+    window.addEventListener('portfolio:settings-changed', function() {
+      setupCursors();
+    });
+
+    start();
   }
 
   function setupCursors() {
@@ -36,7 +38,7 @@
     cursors = [];
 
     var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { cursors: true, cursorCount: 3 };
-    if (!cfg.cursors || !desktop.matches || window.PortfolioSettings.isMotionReduced()) {
+    if (!cfg.cursors) {
       stop();
       return;
     }
@@ -62,8 +64,8 @@
       cursors.push({
         el: el,
         data: data,
-        x: Math.round(container.clientWidth * 0.65),
-        y: Math.round(container.clientHeight * 0.22),
+        x: 0,
+        y: 0,
         targetX: 0,
         targetY: 0,
         t: data.offset,
@@ -81,6 +83,11 @@
     if (!container || cursors.length === 0) return;
 
     var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { cursorSpeed: 1.0, motion: 'full' };
+    if (cfg.motion === 'reduced') {
+      stop();
+      return;
+    }
+
     var speedMult = cfg.cursorSpeed || 1.0;
     var rect = container.getBoundingClientRect();
     var w = rect.width;
@@ -96,9 +103,9 @@
       c.t += c.baseSpeed * speedMult;
 
       // Parametric Lissajous & Lemniscate trajectories for organic paths
-      var cx = w * 0.68;
-      var cy = h * 0.54;
-      var rx = w * 0.17 * c.data.pathScale;
+      var cx = w * 0.5;
+      var cy = h * 0.5;
+      var rx = w * 0.38 * c.data.pathScale;
       var ry = h * 0.36 * c.data.pathScale;
 
       // Trajectory variations

@@ -1,88 +1,151 @@
-/* The code frame can move within the space reserved for it in the hero. */
-(function () {
+/**
+ * Interactive Selection HUD (Figma Bounding Box)
+ * Inspired by onlines.com.ar home-hero__seleccion and Figma canvas selection.
+ * Adds interactive resize handles, coordinate HUD, and draggable positioning.
+ */
+(function(window) {
   'use strict';
 
+  var selectionEl = null;
+  var hudEl = null;
+  var isDragging = false;
+  var startX = 0, startY = 0;
+  var currentX = 0, currentY = 0;
+
   function init() {
-    var selection = document.getElementById('hero-selection-box');
-    if (!selection) return;
+    selectionEl = document.getElementById('hero-selection-box');
+    if (!selectionEl) return;
 
-    var hero = selection.closest('.sec-hero');
-    var wrap = selection.closest('.wrap');
-    var copy = hero.querySelector('.hero-text');
-    var handle = selection.querySelector('.selection-drag-handle');
-    var hud = selection.querySelector('.selection-hud');
-    var drag = null;
-    var x = 0;
-    var y = 0;
+    hudEl = selectionEl.querySelector('.selection-hud');
 
-    function updateHud() {
-      var rect = selection.getBoundingClientRect();
-      hud.textContent = Math.round(rect.width) + ' × ' + Math.round(rect.height);
-    }
+    setupInteraction();
 
-    function position(nextX, nextY) {
-      x = nextX;
-      y = nextY;
-      selection.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-    }
+    window.addEventListener('portfolio:settings-changed', function() {
+      var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { selectionBox: true };
+      if (selectionEl) {
+        selectionEl.style.display = cfg.selectionBox ? '' : 'none';
+      }
+    });
+  }
 
-    function syncSettings() {
-      var settings = window.PortfolioSettings.get();
-      selection.classList.toggle('is-plain', !settings.selectionBox);
-      handle.classList.toggle('is-draggable', settings.selectionBox && settings.selectionDraggable);
-      if (!handle.classList.contains('is-draggable')) position(0, 0);
+  function setupInteraction() {
+    if (!selectionEl) return;
+
+    var handle = selectionEl.querySelector('.selection-drag-handle') || selectionEl;
+
+    handle.addEventListener('mousedown', onPointerDown);
+    handle.addEventListener('touchstart', onTouchStart, { passive: false });
+
+    // Double-click to reset position
+    selectionEl.addEventListener('dblclick', function(e) {
+      e.stopPropagation();
+      currentX = 0;
+      currentY = 0;
+      selectionEl.style.transform = 'translate3d(0, 0, 0)';
       updateHud();
-    }
-
-    handle.addEventListener('pointerdown', function (event) {
-      if (drag || event.button !== 0 || event.target.closest('button')) return;
-      if (!handle.classList.contains('is-draggable')) return;
-
-      var frame = selection.getBoundingClientRect();
-      var text = copy.getBoundingClientRect();
-      var bounds = wrap.getBoundingClientRect();
-      var stacked = text.bottom <= frame.top - y;
-      var top = frame.top - y;
-      var left = frame.left - x;
-      var hudHeight = hud.offsetHeight + 8;
-      var headerBottom = hero.getBoundingClientRect().top + document.querySelector('.site-nav').offsetHeight;
-
-      drag = {
-        id: event.pointerId,
-        startX: event.clientX - x,
-        startY: event.clientY - y,
-        minX: stacked ? 0 : Math.min(0, text.right + 8 - left),
-        maxX: Math.max(0, bounds.right - left - frame.width),
-        minY: Math.min(0, Math.max(stacked ? text.bottom + 8 : bounds.top - 32, headerBottom) + hudHeight - top),
-        maxY: Math.max(0, Math.min(48, hero.getBoundingClientRect().bottom - top - frame.height - 8))
-      };
-      selection.classList.add('is-dragging');
-      handle.setPointerCapture(event.pointerId);
-      if (window.SoundFX) window.SoundFX.click(1.2);
+      if (window.SoundFX) window.SoundFX.toggle(true);
     });
 
-    handle.addEventListener('pointermove', function (event) {
-      if (!drag || event.pointerId !== drag.id) return;
-      position(
-        Math.max(drag.minX, Math.min(drag.maxX, event.clientX - drag.startX)),
-        Math.max(drag.minY, Math.min(drag.maxY, event.clientY - drag.startY))
-      );
-    });
+    updateHud();
+  }
 
-    handle.addEventListener('lostpointercapture', function () {
-      drag = null;
-      selection.classList.remove('is-dragging');
-    });
+  function onPointerDown(e) {
+    var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { selectionDraggable: true };
+    if (!cfg.selectionDraggable) return;
 
-    handle.addEventListener('dblclick', function (event) {
-      if (!event.target.closest('button')) position(0, 0);
-    });
+    // Don't drag if clicking buttons inside selection
+    if (e.target.closest('button, a, input, select, textarea')) return;
 
-    window.addEventListener('resize', function () { position(0, 0); });
-    window.addEventListener('portfolio:settings-changed', syncSettings);
-    if ('ResizeObserver' in window) new ResizeObserver(updateHud).observe(selection);
-    syncSettings();
+    isDragging = true;
+    startX = e.clientX - currentX;
+    startY = e.clientY - currentY;
+
+    selectionEl.classList.add('is-dragging');
+    document.addEventListener('mousemove', onPointerMove);
+    document.addEventListener('mouseup', onPointerUp);
+
+    if (window.SoundFX) window.SoundFX.click(1.2);
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    currentX = e.clientX - startX;
+    currentY = e.clientY - startY;
+
+    // Clamp within reasonable boundaries
+    currentX = Math.max(-200, Math.min(200, currentX));
+    currentY = Math.max(-150, Math.min(150, currentY));
+
+    selectionEl.style.transform = 'translate3d(' + currentX.toFixed(1) + 'px, ' + currentY.toFixed(1) + 'px, 0)';
+    updateHud();
+  }
+
+  function onPointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    selectionEl.classList.remove('is-dragging');
+    document.removeEventListener('mousemove', onPointerMove);
+    document.removeEventListener('mouseup', onPointerUp);
+
+    if (window.SoundFX) window.SoundFX.click(0.9);
+  }
+
+  function onTouchStart(e) {
+    var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { selectionDraggable: true };
+    if (!cfg.selectionDraggable || e.touches.length !== 1) return;
+    if (e.target.closest('button, a, input, select, textarea')) return;
+
+    var touch = e.touches[0];
+    isDragging = true;
+    startX = touch.clientX - currentX;
+    startY = touch.clientY - currentY;
+
+    selectionEl.classList.add('is-dragging');
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend', onTouchEnd);
+  }
+
+  function onTouchMove(e) {
+    if (!isDragging || e.touches.length !== 1) return;
+    var touch = e.touches[0];
+    currentX = touch.clientX - startX;
+    currentY = touch.clientY - startY;
+
+    currentX = Math.max(-100, Math.min(100, currentX));
+    currentY = Math.max(-100, Math.min(100, currentY));
+
+    selectionEl.style.transform = 'translate3d(' + currentX.toFixed(1) + 'px, ' + currentY.toFixed(1) + 'px, 0)';
+    updateHud();
+    e.preventDefault();
+  }
+
+  function onTouchEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    selectionEl.classList.remove('is-dragging');
+    document.removeEventListener('touchmove', onTouchMove);
+    document.removeEventListener('touchend', onTouchEnd);
+  }
+
+  function updateHud() {
+    if (!hudEl || !selectionEl) return;
+    var rect = selectionEl.getBoundingClientRect();
+    var w = Math.round(rect.width);
+    var h = Math.round(rect.height);
+    var x = Math.round(rect.left);
+    var y = Math.round(rect.top);
+
+    // a narrow frame (a phone) drops the position and frame name so the label stays inside it
+    hudEl.textContent = w < 420
+      ? w + ' × ' + h
+      : 'x: ' + x + '  y: ' + y + ' · ' + w + ' × ' + h + ' · FRAME: SRIKANTH_HERO';
   }
 
   document.addEventListener('DOMContentLoaded', init);
-})();
+  window.addEventListener('resize', updateHud);
+
+  window.InteractiveSelection = {
+    updateHud: updateHud
+  };
+})(window);

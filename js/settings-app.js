@@ -294,9 +294,11 @@
     var cards = document.querySelectorAll('.preset-card');
     cards.forEach(function(c) {
       var pid = c.getAttribute('data-preset');
-      var active = pid === state.preset;
-      c.classList.toggle('is-active', active);
-      c.setAttribute('aria-pressed', String(active));
+      if (pid === state.preset) {
+        c.classList.add('is-active');
+      } else {
+        c.classList.remove('is-active');
+      }
     });
 
     // Token inputs

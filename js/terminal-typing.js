@@ -7,101 +7,131 @@
   'use strict';
 
   var SNIPPETS = {
-    python: {
-      full: [
-        '# Quorum · local meeting notes',
-        'def meeting_notes(tab_audio):',
-        '    transcript = whisper.transcribe(tab_audio)',
-        '    return gemma.extract(',
-        '        transcript,',
-        '        fields=["decisions", "action_items"],',
-        '        include_owners=True,',
-        '    )'
-      ].join('\n'),
-      compact: [
-        '# Quorum · local notes',
-        'text = whisper.transcribe(audio)',
-        'notes = gemma.extract(text)',
-        'show(notes)'
-      ].join('\n')
-    },
-    kotlin: {
-      full: [
-        "// I Can't Wake Up! · alarm dismissal",
-        'fun dismissAlarm(alarm: Alarm) {',
-        '    val challenge = alarm.wakeUpChallenge',
-        '',
-        '    if (challenge.isComplete) {',
-        '        alarm.dismiss()',
-        '        scheduleAwakeCheck(alarm)',
-        '    }',
-        '}'
-      ].join('\n'),
-      compact: [
-        '// Alarm dismissal',
-        'if (challenge.isComplete) {',
-        '    scheduleAwakeCheck(alarm)',
-        '}'
-      ].join('\n')
-    }
+    python: [
+      '# Quorum: meeting notes that stay on this machine',
+      'from intelligence_engine import generate_post_meeting_synthesis',
+      '',
+      'LM_STUDIO = "http://localhost:1234/v1"',
+      'MODEL = "google/gemma-4-26b-a4b-qat"',
+      '',
+      'def summarise(transcript: str) -> dict:',
+      '    notes = generate_post_meeting_synthesis(',
+      '        transcript, base_url=LM_STUDIO, model=MODEL',
+      '    )',
+      '    return {',
+      '        "decisions": notes["decisions"],',
+      '        "action_items": notes["action_items"],',
+      '    }'
+    ].join('\n'),
+
+    kotlin: [
+      '// I Can\'t Wake Up!: an alarm you have to think to stop',
+      'fun scheduleAlarm(context: Context, alarm: Alarm) {',
+      '    val manager = context.getSystemService(AlarmManager::class.java)',
+      '    manager.setExactAndAllowWhileIdle(',
+      '        AlarmManager.RTC_WAKEUP,',
+      '        alarm.triggerAtMillis,',
+      '        alarm.pendingIntent(context)',
+      '    )',
+      '}',
+      '',
+      'val challenges = listOf(Math, MemoryMatch, SimonSays, QrScan)'
+    ].join('\n')
   };
 
+  var currentSnippetKey = 'python';
+  var heroTypingIndex = 0;
+  var isTyping = false;
+  var typingTimeout = null;
+
   function initHeroTyping() {
-    var code = document.getElementById('hero-code-typing');
-    if (!code) return;
+    var codeEl = document.getElementById('hero-code-typing');
+    if (!codeEl) return;
 
-    var cursor = code.nextElementSibling;
+    startTyping(currentSnippetKey);
+
+    // Language tabs in Hero window
     var tabs = document.querySelectorAll('.code-lang-tab');
-    var compact = window.matchMedia('(max-width: 639px)');
-    var language = 'python';
-    var timeout;
-    var animationMode;
-
-    function render() {
-      clearTimeout(timeout);
-      var settings = window.PortfolioSettings.get();
-      var snippet = SNIPPETS[language][compact.matches ? 'compact' : 'full'];
-      animationMode = settings.typingAnimation && !window.PortfolioSettings.isMotionReduced();
-      cursor.hidden = !animationMode;
-      if (!animationMode) {
-        code.textContent = snippet;
-        return;
-      }
-
-      var index = 0;
-      function typeChar() {
-        index++;
-        code.textContent = snippet.slice(0, index);
-        if (index % 6 === 0 && window.SoundFX) window.SoundFX.typeKey();
-        if (index < snippet.length) {
-          var delay = snippet.charAt(index - 1) === '\n' ? 90 : settings.typingSpeed;
-          timeout = setTimeout(typeChar, delay);
-        } else {
-          cursor.hidden = true;
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var lang = tab.getAttribute('data-lang');
+        if (lang && SNIPPETS[lang]) {
+          tabs.forEach(function(t) { t.classList.remove('is-active'); });
+          tab.classList.add('is-active');
+          currentSnippetKey = lang;
+          startTyping(lang);
+          if (window.SoundFX) window.SoundFX.click(1.1);
         }
-      }
-
-      typeChar();
-    }
-
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        language = tab.dataset.lang;
-        tabs.forEach(function (item) {
-          item.classList.toggle('is-active', item === tab);
-          item.setAttribute('aria-pressed', String(item === tab));
-        });
-        render();
-        if (window.SoundFX) window.SoundFX.click(1.1);
       });
     });
 
-    compact.addEventListener('change', render);
-    window.addEventListener('portfolio:settings-changed', function () {
-      var animate = window.PortfolioSettings.get().typingAnimation && !window.PortfolioSettings.isMotionReduced();
-      if (animate !== animationMode) render();
-    });
-    render();
+    // Run Code Button in Hero window
+    var runBtn = document.getElementById('hero-code-run');
+    var outputEl = document.getElementById('hero-code-output');
+    if (runBtn && outputEl) {
+      runBtn.addEventListener('click', function() {
+        runBtn.disabled = true;
+        runBtn.textContent = 'Executing...';
+        outputEl.style.display = 'block';
+        outputEl.innerHTML = '<span class="term-dim">Connecting to NST GPU Cluster...</span>';
+
+        if (window.SoundFX) window.SoundFX.modeShift();
+
+        setTimeout(function() {
+          outputEl.innerHTML = [
+            '<span class="term-green">✓ Task Dispatched</span> [Status 200 OK]',
+            '<span class="term-cyan">Model:</span> gemini-3.8-flash · <span class="term-cyan">Latency:</span> 24.8ms',
+            '<span class="term-dim">Tokens: 1,480 | Throughput: 142 tps | Accuracy: 98.4%</span>'
+          ].join('<br>');
+          runBtn.disabled = false;
+          runBtn.textContent = '▶ Run';
+          if (window.SoundFX) window.SoundFX.click(1.3);
+        }, 750);
+      });
+    }
+  }
+
+  function startTyping(snippetKey) {
+    var codeEl = document.getElementById('hero-code-typing');
+    if (!codeEl) return;
+
+    clearTimeout(typingTimeout);
+    heroTypingIndex = 0;
+    codeEl.textContent = '';
+    isTyping = true;
+
+    var text = SNIPPETS[snippetKey];
+    var cfg = window.PortfolioSettings ? window.PortfolioSettings.get() : { typingAnimation: true, typingSpeed: 30 };
+
+    if (!cfg.typingAnimation) {
+      codeEl.textContent = text;
+      isTyping = false;
+      return;
+    }
+
+    function typeChar() {
+      if (heroTypingIndex < text.length) {
+        var char = text.charAt(heroTypingIndex);
+        codeEl.textContent += char;
+        heroTypingIndex++;
+
+        // Occasional typing sound click
+        if (heroTypingIndex % 6 === 0 && window.SoundFX) {
+          window.SoundFX.typeKey();
+        }
+
+        var speed = cfg.typingSpeed || 25;
+        // Pause slightly on newlines
+        if (char === '\n') speed = 120;
+        else if (char === ' ') speed = 15;
+
+        typingTimeout = setTimeout(typeChar, speed);
+      } else {
+        isTyping = false;
+      }
+    }
+
+    typeChar();
   }
 
   /* ---------------- Interactive Terminal Playground ---------------- */
@@ -170,12 +200,11 @@
         ].join('<br>');
         break;
 
-      case 'ls projects':
       case 'projects':
         resp.innerHTML = [
           '1. <strong class="term-green">Quorum</strong>: private meeting notes, Whisper and Gemma 4 on-device (TypeScript, Python)',
           '2. <strong class="term-green">DocDrift AI</strong>: finds stale READMEs and opens a fix as a pull request (TypeScript)',
-          '3. <strong class="term-green">I Can\'t Wake Up!</strong>: an Android alarm with eight wake-up challenges (Kotlin)',
+          '3. <strong class="term-green">I Can\'t Wake Up!</strong>: an Android alarm you cannot cheat (Kotlin)',
           '4. <strong class="term-green">Voice Assist AI</strong>: dictation and tone-aware replies in any Android app (Kotlin)',
           '5. <strong class="term-green">Wardrobe Brainy</strong>: an MCP server for your wardrobe (Python, SQLite)',
           '6. <strong class="term-green">MusicDownloaderCLI</strong>: hi-res audio from a pasted link (Python)'
@@ -184,10 +213,10 @@
 
       case 'stack':
         resp.innerHTML = [
-          '<span class="term-cyan">Languages:</span> Kotlin, TypeScript and Python',
-          '<span class="term-cyan">Android:</span> Jetpack Compose, Room and Android KeyStore',
-          '<span class="term-cyan">AI:</span> Gemma 4 in LM Studio, Whisper large-v3-turbo and FastMCP',
-          '<span class="term-cyan">Web:</span> Next.js, FastAPI, Starlette, SQLite and SeleniumBase'
+          '<span class="term-cyan">Languages:</span> Kotlin 51%, TypeScript 31%, Python 12%, JavaScript 3%',
+          '<span class="term-cyan">Android:</span> Jetpack Compose, Room, accessibility and overlay services',
+          '<span class="term-cyan">AI:</span> Gemma 4 in LM Studio, Whisper, MCP with FastMCP',
+          '<span class="term-cyan">Web:</span> Next.js, FastAPI, SeleniumBase'
         ].join('<br>');
         break;
 
@@ -195,9 +224,8 @@
         resp.innerHTML = 'Newton School of Technology: where I study Computer Science and AI, and where I came to learn by building instead of by rote.';
         break;
 
-      case 'whoami':
       case 'bio':
-        resp.innerHTML = 'Srikanth Nagendran. I study Computer Science and AI at Newton School of Technology in India. I learn by building things, getting stuck and working out the fix. Life has had ups and downs; I keep the balance net positive and live without regrets.';
+        resp.innerHTML = 'Srikanth Nagendran. I learn by building things, getting stuck and working out the fix. Life has had ups and downs; I keep the balance net positive and live without regrets.';
         break;
 
       case 'ai':
@@ -220,10 +248,7 @@
         break;
 
       case 'contact':
-        resp.innerHTML = [
-          'Email <a href="mailto:SrikanthofficialEH@gmail.com" class="term-link">SrikanthofficialEH@gmail.com</a>',
-          'GitHub <a href="https://github.com/GodGamerAgent" class="term-link">github.com/GodGamerAgent</a>'
-        ].join('<br>');
+        resp.innerHTML = 'GitHub: <a href="https://github.com/GodGamerAgent" target="_blank" rel="noopener" class="term-link">github.com/GodGamerAgent</a>';
         break;
 
       case 'clear':
@@ -247,4 +272,7 @@
     initTerminalPlayground();
   });
 
+  window.TerminalTyping = {
+    startHeroTyping: startTyping
+  };
 })(window);
