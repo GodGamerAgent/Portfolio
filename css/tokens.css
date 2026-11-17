@@ -1,0 +1,70 @@
+/**
+ * Dynamic Design Tokens
+ * Loaded before layout; dynamically overridden by PortfolioSettings.
+ */
+:root {
+  /* Baseline Palette: Direction 1 (Canvas Studio) */
+  --p-bg: #ffffff;
+  --p-surface: #f6f7f9;
+  --p-surface-hover: #edeef2;
+  --p-ink: #111318;
+  --p-muted: #5e6573;
+  --p-accent: #1a4be0;
+  --p-accent-muted: #e8eeff;
+  --p-accent-ink: #ffffff;
+  --p-action: #1a4be0;
+  --p-action-ink: #ffffff;
+  --p-border: #e4e7ec;
+  --p-code-bg: #13151b;
+  --p-code-ink: #f0f2f5;
+
+  /* Typography defaults */
+  --font-display: "Funnel Display", system-ui, -apple-system, sans-serif;
+  --font-text: "Funnel Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --display-weight: 500;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-base: 6px;
+  --r-lg: 12px;
+  --r-pill: 9999px;
+
+  /* Layout Spacing */
+  --wrap-max: 1360px;
+  --wrap-pad: clamp(16px, 4vw, 48px);
+  --section-pad-y: clamp(64px, 8vh, 112px);
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-floating: 0 12px 32px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-base: 220ms;
+}
+
+/* Sharp radius mode */
+[data-radius="sharp"] {
+  --r-sm: 0px;
+  --r-base: 0px;
+  --r-lg: 0px;
+}
+
+/* Round radius mode */
+[data-radius="round"] {
+  --r-sm: 8px;
+  --r-base: 14px;
+  --r-lg: 24px;
+}
+
+/* Motion Preferences */
+[data-motion="reduced"] * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

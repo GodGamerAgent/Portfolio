@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-ground="sand" data-buttons="solid" data-motion>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Srikanth: Student Developer &amp; AI Engineer at Newton School of Technology</title>
+  <meta name="description" content="Personal developer portfolio of Srikanth, Computer Science and AI student at Newton School of Technology. Features distributed systems, interactive WebGL, and Graph-RAG architectures.">
+
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Srikanth: Student Developer &amp; AI Engineer at Newton School of Technology">
+  <meta property="og:description" content="Personal developer portfolio of Srikanth, Computer Science and AI student at Newton School of Technology.">
+  <meta property="og:image" content="assets/layout/tiles/desktop-sec-01-a.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/demo/python.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta name="site-kind" content="software">
+  <meta name="page-type" content="software">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=DM+Mono:wght@400;500&family=Figtree:wght@400..600&family=Funnel+Display:wght@400..700&family=Funnel+Sans:wght@400..600&family=Urbanist:wght@400..700&display=swap" rel="stylesheet">
+
+  <!-- System & Dynamic Stylesheets -->
+  <link rel="stylesheet" href="assets/system.css">
+  <link rel="stylesheet" href="assets/ui/cards.css">
+  <link rel="stylesheet" href="assets/motion/motion.css">
+  <link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+  <link rel="stylesheet" href="assets/layout/layout.css">
+  <link rel="stylesheet" href="assets/icons/icon.css">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout-portfolio.css">
+  <link rel="stylesheet" href="css/dynamic-hero.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <script>
+    document.documentElement.classList.add('m-enter');
+    setTimeout(function() { document.documentElement.classList.add('m-enter-done'); }, 700);
+  </script>
+</head>
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link" style="position:absolute;top:-100px;left:16px;z-index:999;padding:8px 16px;background:#1a4be0;color:#fff;border-radius:4px;transition:top 0.2s;" onfocus="this.style.top='16px'" onblur="this.style.top='-100px'">Skip to main content</a>
+
+  <!-- Top Navigation -->
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand-link" aria-label="Srikanth Portfolio Home">
+        <span class="brand-avatar">S</span>
+        <span>Srikanth</span>
+      </a>
+
+      <div class="nav-status-pill" title="Current Academic & Lab Affiliation">
+        <span class="status-dot"></span>
+        <span>Newton School of Technology</span>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#sec-projects" class="nav-link">Projects</a></li>
+          <li><a href="#sec-stack" class="nav-link">Tech Stack</a></li>
+          <li><a href="#sec-nst_lab" class="nav-link">NST AI Lab</a></li>
+          <li><a href="#sec-terminal" class="nav-link">Terminal</a></li>
+          <li><a href="#sec-contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="nav-sound-toggle" class="nav-icon-btn js-sound-click" type="button" aria-pressed="true" title="Toggle tactile sound synthesis">
+          <span class="sound-icon">🔊</span>
+        </button>
+        <a href="settings.html" class="nav-settings-link" title="Open Granular Customization Studio">
+          <span>⚙ Settings</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION (Onlines.com.ar Inspired Interactive Canvas) -->
+    <section id="sec-hero" class="sec-hero" data-enter>
+      <!-- Interactive Grid Canvas Background -->
+      <canvas id="canvas-grid" class="canvas-grid-bg"></canvas>
+
+      <!-- Multiplayer Peer Cursors Layer -->
+      <div id="multiplayer-cursors-layer" class="multiplayer-layer" aria-hidden="true"></div>
+
+      <div class="wrap">
+        <div class="hero-grid">
+          <!-- Left: Narrative & Credentials -->
+          <div class="hero-text">
+            <div class="hero-badge-row">
+              <span class="hero-role-pill">Student Developer</span>
+
+              <!-- Interactive Mode Switch (like onlines.com.ar Modo IA) -->
+              <button class="ai-mode-pill js-ai-mode-toggle" type="button" role="switch" aria-checked="false" title="Toggle AI Copilot Mode">
+                <span id="hero-ai-badge">Student Mode</span>
+                <span class="ai-mode-toggle">
+                  <span class="ai-mode-knob"></span>
+                </span>
+              </button>
+            </div>
+
+            <h1 class="hero-h1">Engineering intelligent systems with high-craft interfaces.</h1>
+
+            <p class="hero-lead">
+              I am Srikanth, a Computer Science &amp; AI student at Newton School of Technology. I research distributed agent orchestration, build GPU-accelerated web tools, and craft tactile user interfaces.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#sec-projects" class="btn btn-primary">View projects</a>
+              <a href="#sec-nst_lab" class="btn btn-secondary">Explore NST Lab</a>
+            </div>
+
+            <div class="hero-proof-line">
+              <span class="hero-proof-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                NST AI Cluster
+              </span>
+              <span>·</span>
+              <span class="hero-proof-item">4 Production Systems</span>
+              <span>·</span>
+              <span class="hero-proof-item">Open Source Contributor</span>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Canvas with Figma Selection Bounding Box -->
+          <div class="hero-canvas-art">
+            <!-- Floating Parallax Tool Badges -->
+            <div class="float-badge badge-py js-float-badge" data-depth="22">
+              <img src="assets/icons/demo/python.svg" alt="" class="stack-icon">
+              <span>Python 3.12</span>
+            </div>
+
+            <div class="float-badge badge-react js-float-badge" data-depth="-18">
+              <img src="assets/icons/demo/react.svg" alt="" class="stack-icon">
+              <span>React &amp; WebGL</span>
+            </div>
+
+            <div class="float-badge badge-nst js-float-badge" data-depth="15">
+              <span class="status-dot"></span>
+              <span>NST Lab Node #04</span>
+            </div>
+
+            <!-- Figma Bounding Box with Draggable Handles & Coordinate HUD -->
+            <div id="hero-selection-box" class="figma-selection">
+              <span class="selection-handle handle-tl"></span>
+              <span class="selection-handle handle-tr"></span>
+              <span class="selection-handle handle-bl"></span>
+              <span class="selection-handle handle-br"></span>
+              <span class="selection-handle handle-tc"></span>
+              <span class="selection-handle handle-bc"></span>
+              <div class="selection-hud">x: 742  y: 120 · 580 × 390 · FRAME: SRIKANTH_HERO</div>
+
+              <!-- Live Code Editor Window -->
+              <div class="code-window">
+                <div class="window-header selection-drag-handle" title="Drag to move frame across canvas">
+                  <div class="window-dots">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                  </div>
+                  <div class="window-tabs">
+                    <button class="code-lang-tab is-active" data-lang="typescript" type="button">agent.ts</button>
+                    <button class="code-lang-tab" data-lang="python" type="button">inspector.py</button>
+                  </div>
+                  <button id="hero-code-run" class="code-run-btn" type="button">▶ Run</button>
+                </div>
+
+                <div class="window-body">
+                  <code id="hero-code-typing"></code><span class="typing-cursor"></span>
+                </div>
+
+                <div id="hero-code-output" class="window-output"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. DEALT MOMENT: WORD-BY-WORD HIGHLIGHT STATEMENT -->
+    <section id="sec-statement" class="sec-statement">
+      <div class="wrap">
+        <p class="statement-text">
+          <span class="hl-word">Software</span>
+          <span class="hl-word">should</span>
+          <span class="hl-word">feel</span>
+          <span class="hl-word">alive.</span>
+          <span class="hl-word">At</span>
+          <span class="hl-word">Newton</span>
+          <span class="hl-word">School</span>
+          <span class="hl-word">of</span>
+          <span class="hl-word">Technology,</span>
+          <span class="hl-word">I</span>
+          <span class="hl-word">bridge</span>
+          <span class="hl-word">low-latency</span>
+          <span class="hl-word">autonomous</span>
+          <span class="hl-word">agent</span>
+          <span class="hl-word">inference</span>
+          <span class="hl-word">with</span>
+          <span class="hl-word">tactile,</span>
+          <span class="hl-word">responsive</span>
+          <span class="hl-word">design</span>
+          <span class="hl-word">systems</span>
+          <span class="hl-word">where</span>
+          <span class="hl-word">every</span>
+          <span class="hl-word">interaction</span>
+          <span class="hl-word is-accent">delivers</span>
+          <span class="hl-word is-accent">substance.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. SELECTED PROJECTS SECTION -->
+    <section id="sec-projects" class="sec-projects">
+      <div class="wrap">
+        <div class="sec-header">
+          <span class="sec-category">Selected Work</span>
+          <h2 class="sec-title">Systems engineered for real workloads.</h2>
+          <p class="sec-desc">
+            Production codebases demonstrating distributed agent orchestration, high-frequency graph databases, and interactive GPU computing.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="project-preview-mock">
+                <div style="display:flex;justify-content:space-between;color:#38bdf8;">
+                  <span>// OmniGraph Pipeline</span>
+                  <span>LangGraph Engine</span>
+                </div>
+                <div style="opacity:0.8;font-size:10px;">
+                  $ neo4j.query("MATCH (a:Agent)-[r:DISPATCH]->(t:Task) RETURN t")<br>
+                  &gt; Active Graph Nodes: 128,490 | Query Latency: 4.2ms
+                </div>
+                <div style="color:#10b981;">✓ Multi-Agent Consensus Achieved</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta-row">
+                <span class="project-type-tag">Agent Architecture</span>
+                <span class="project-metric">4.2ms Query Latency</span>
+              </div>
+              <h3 class="project-title">OmniGraph AI</h3>
+              <p class="project-desc">
+                Distributed graph-RAG multi-agent orchestrator connecting vector retrieval with knowledge graphs for recursive chain reasoning.
+              </p>
+              <div class="project-tags">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Neo4j</span>
+                <span class="tech-tag">LangGraph</span>
+                <span class="tech-tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  View repository →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="project-preview-mock">
+                <div style="display:flex;justify-content:space-between;color:#ffbd2e;">
+                  <span>// GLSL Shader Pipeline</span>
+                  <span>60 FPS Active</span>
+                </div>
+                <div style="opacity:0.8;font-size:10px;">
+                  uniform vec2 u_resolution;<br>
+                  attribute vec3 a_position;<br>
+                  void main() { gl_Position = projectionMatrix * modelViewMatrix * vec4(a_position, 1.0); }
+                </div>
+                <div style="color:#10b981;">✓ 50,000 Nodes Rendered</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta-row">
+                <span class="project-type-tag">Computer Graphics</span>
+                <span class="project-metric">60 FPS at 50k Nodes</span>
+              </div>
+              <h3 class="project-title">HyperCanvas WebGL</h3>
+              <p class="project-desc">
+                High-performance node graph visualization framework built with custom GLSL shaders, spring physics, and instanced geometry.
+              </p>
+              <div class="project-tags">
+                <span class="tech-tag">WebGL</span>
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">GLSL</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  View repository →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="project-preview-mock">
+                <div style="display:flex;justify-content:space-between;color:#10b981;">
+                  <span>// NST Cluster Telemetry</span>
+                  <span>Live Stream</span>
+                </div>
+                <div style="opacity:0.8;font-size:10px;">
+                  [NODE-A100-01] GPU Temp: 62°C | Memory: 74.2/80GB<br>
+                  [NODE-A100-02] GPU Temp: 58°C | Memory: 68.1/80GB<br>
+                  Telemetry Heartbeat: 1,000 events/sec via Redis
+                </div>
+                <div style="color:#38bdf8;">✓ Zero Packet Loss</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta-row">
+                <span class="project-type-tag">Distributed Systems</span>
+                <span class="project-metric">1M Events/Sec</span>
+              </div>
+              <h3 class="project-title">NST Pulse Telemetry</h3>
+              <p class="project-desc">
+                Real-time GPU cluster telemetry system designed for Newton School of Technology deep learning lab, tracking training metrics and memory allocation.
+              </p>
+              <div class="project-tags">
+                <span class="tech-tag">Go</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">React</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  View repository →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <div class="project-preview">
+              <div class="project-preview-mock">
+                <div style="display:flex;justify-content:space-between;color:#ec4899;">
+                  <span>// Latent Space Inspector</span>
+                  <span>PyTorch 2.3</span>
+                </div>
+                <div style="opacity:0.8;font-size:10px;">
+                  layer_activations = model.transformer_blocks[11].attn.weights<br>
+                  entropy = -torch.sum(layer_activations * torch.log(layer_activations))<br>
+                  Mean Attention Dispersion: 0.142
+                </div>
+                <div style="color:#10b981;">✓ Activations Normalized</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta-row">
+                <span class="project-type-tag">Model Interpretability</span>
+                <span class="project-metric">32 Attention Heads</span>
+              </div>
+              <h3 class="project-title">LatentDiff Inspector</h3>
+              <p class="project-desc">
+                Interactive latent diffusion model probe that extracts layer-by-layer attention maps and token saliency distributions in real time.
+              </p>
+              <div class="project-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Tailwind</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                  View repository →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TECH STACK SECTION -->
+    <section id="sec-stack" class="sec-stack">
+      <div class="wrap">
+        <div class="sec-header">
+          <span class="sec-category">Engineering Competencies</span>
+          <h2 class="sec-title">Modern tools for production systems.</h2>
+          <p class="sec-desc">
+            Technologies and frameworks utilized across production systems, AI research, and high-performance client rendering.
+          </p>
+        </div>
+
+        <div class="stack-matrix">
+          <!-- Category 1 -->
+          <div class="stack-category-card">
+            <h3 class="stack-cat-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Core Languages
+            </h3>
+            <ul class="stack-items-list">
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/typescript.svg" alt="" class="stack-icon">
+                  <span>TypeScript</span>
+                </div>
+                <span class="stack-level">Advanced</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/python.svg" alt="" class="stack-icon">
+                  <span>Python</span>
+                </div>
+                <span class="stack-level">Advanced</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <svg class="stack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                  <span>C++</span>
+                </div>
+                <span class="stack-level">Systems</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/postgres.svg" alt="" class="stack-icon">
+                  <span>SQL &amp; PostgreSQL</span>
+                </div>
+                <span class="stack-level">Production</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="stack-category-card">
+            <h3 class="stack-cat-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              Frontend &amp; Graphics
+            </h3>
+            <ul class="stack-items-list">
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/react.svg" alt="" class="stack-icon">
+                  <span>React &amp; Next.js</span>
+                </div>
+                <span class="stack-level">Production</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <svg class="stack-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                  <span>WebGL &amp; Three.js</span>
+                </div>
+                <span class="stack-level">Interactive</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/tailwindcss.svg" alt="" class="stack-icon">
+                  <span>Tailwind CSS</span>
+                </div>
+                <span class="stack-level">Design Systems</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/figma.svg" alt="" class="stack-icon">
+                  <span>Figma &amp; Prototyping</span>
+                </div>
+                <span class="stack-level">UI Craft</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="stack-category-card">
+            <h3 class="stack-cat-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              AI &amp; Distributed Systems
+            </h3>
+            <ul class="stack-items-list">
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/python.svg" alt="" class="stack-icon">
+                  <span>PyTorch &amp; Hugging Face</span>
+                </div>
+                <span class="stack-level">Deep Learning</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/docker.svg" alt="" class="stack-icon">
+                  <span>Docker &amp; Containers</span>
+                </div>
+                <span class="stack-level">Infra</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/redis.svg" alt="" class="stack-icon">
+                  <span>Redis &amp; Caching</span>
+                </div>
+                <span class="stack-level">In-Memory</span>
+              </li>
+              <li class="stack-item">
+                <div class="stack-item-main">
+                  <img src="assets/icons/demo/git.svg" alt="" class="stack-icon">
+                  <span>Git &amp; GitHub Actions</span>
+                </div>
+                <span class="stack-level">CI/CD</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. NEWTON SCHOOL OF TECHNOLOGY (NST) AI LAB SECTION -->
+    <section id="sec-nst_lab" class="sec-nst-lab">
+      <div class="wrap">
+        <div class="nst-lab-wrap">
+          <div class="nst-banner-row">
+            <div class="nst-badge-group">
+              <span class="nst-institution-pill">
+                <span class="status-dot"></span>
+                Newton School of Technology
+              </span>
+              <h2 class="nst-headline">AI Research &amp; Engineering Lab</h2>
+            </div>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              View Lab Publications →
+            </a>
+          </div>
+
+          <p class="sec-desc">
+            As a student at Newton School of Technology, I operate inside an intensive engineering environment focused on Artificial Intelligence, distributed computing architectures, and end-to-end product deployment.
+          </p>
+
+          <div class="nst-stats-grid">
+            <div class="nst-stat-card">
+              <div class="nst-stat-value">A100</div>
+              <div class="nst-stat-label">GPU Cluster Access for Model Fine-tuning</div>
+            </div>
+            <div class="nst-stat-card">
+              <div class="nst-stat-value">B.Tech</div>
+              <div class="nst-stat-label">Computer Science &amp; AI Undergraduate</div>
+            </div>
+            <div class="nst-stat-card">
+              <div class="nst-stat-value">4+</div>
+              <div class="nst-stat-label">Autonomous Agent Research Pipelines</div>
+            </div>
+            <div class="nst-stat-card">
+              <div class="nst-stat-value">99.4%</div>
+              <div class="nst-stat-label">Inference Accuracy on Graph Benchmarks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. INTERACTIVE TERMINAL PLAYGROUND -->
+    <section id="sec-terminal" class="sec-terminal">
+      <div class="wrap">
+        <div class="sec-header">
+          <span class="sec-category">Interactive Playground</span>
+          <h2 class="sec-title">Explore via the command line.</h2>
+          <p class="sec-desc">
+            Test the interactive terminal emulator. Type commands to inspect my background, execute AI queries, or toggle audio.
+          </p>
+        </div>
+
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="terminal-title">srikanth@nst-workstation: ~ (zsh)</span>
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+          </div>
+
+          <div id="term-body" class="terminal-body">
+            <div class="term-line">
+              <span class="term-dim">Type <span class="term-cyan">help</span> to view available terminal commands. Try <span class="term-cyan">projects</span>, <span class="term-cyan">nst</span>, or <span class="term-cyan">bio</span>.</span>
+            </div>
+          </div>
+
+          <div class="terminal-input-row">
+            <span class="term-prompt">srikanth@nst:~$</span>
+            <input id="term-input" class="term-input" type="text" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. help, projects, stack, nst)...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. METRICS & "NOW" SECTION -->
+    <section id="sec-metrics" class="sec-metrics">
+      <div class="wrap">
+        <div class="sec-header">
+          <span class="sec-category">Status Telemetry</span>
+          <h2 class="sec-title">Current operations and metrics.</h2>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-box">
+            <span class="metric-label">Local Time (IST)</span>
+            <div id="metric-clock" class="metric-val">--:--:-- IST</div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Academic Tenancy</span>
+            <div id="metric-uptime" class="metric-val">NST Active</div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Current Focus</span>
+            <div class="metric-val">Multi-Agent RAG</div>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Availability</span>
+            <div class="metric-val" style="color:#10b981;">Open for Roles</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT SECTION -->
+    <section id="sec-contact" class="sec-contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="sec-header" style="margin-bottom:20px;">
+              <span class="sec-category">Get In Touch</span>
+              <h2 class="sec-title">Let's build something remarkable.</h2>
+              <p class="sec-desc">
+                Whether you have an inquiry regarding distributed agent architectures, engineering collaborations, or developer roles, drop a message below.
+              </p>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-mono);font-size:14px;">
+              <div>
+                <span style="color:var(--p-muted);">Institution:</span>
+                <span>Newton School of Technology</span>
+              </div>
+              <div>
+                <span style="color:var(--p-muted);">Email:</span>
+                <a href="mailto:srikanth@example.com" style="color:var(--p-accent);text-decoration:none;">srikanth@example.com</a>
+              </div>
+              <div>
+                <span style="color:var(--p-muted);">GitHub:</span>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color:var(--p-accent);text-decoration:none;">github.com/srikanth</a>
+              </div>
+              <div>
+                <span style="color:var(--p-muted);">LinkedIn:</span>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color:var(--p-accent);text-decoration:none;">linkedin.com/in/srikanth</a>
+              </div>
+            </div>
+          </div>
+
+          <form id="portfolio-contact-form" class="contact-form">
+            <div class="form-field">
+              <label class="form-label" for="form-name">Your Name</label>
+              <input id="form-name" class="form-input" type="text" name="name" required placeholder="Alex Mercer">
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="form-email">Email Address</label>
+              <input id="form-email" class="form-input" type="email" name="email" required placeholder="alex@company.com">
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="form-message">Message</label>
+              <textarea id="form-message" class="form-textarea" name="message" required placeholder="Hello Srikanth, I would love to connect regarding..."></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <div id="contact-feedback" class="contact-feedback"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-credit">
+        © 2026 Srikanth · Student Developer at Newton School of Technology
+      </div>
+      <ul class="footer-links">
+        <li><a href="settings.html" class="footer-link">Customization Studio</a></li>
+        <li><a href="#sec-projects" class="footer-link">Projects</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a></li>
+        <li><a href="mailto:srikanth@example.com" class="footer-link">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/settings-store.js"></script>
+  <script src="js/sound-fx.js"></script>
+  <script src="js/canvas-grid.js"></script>
+  <script src="js/multiplayer-cursors.js"></script>
+  <script src="js/interactive-selection.js"></script>
+  <script src="js/terminal-typing.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

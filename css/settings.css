@@ -1,0 +1,348 @@
+/**
+ * Granular Settings Studio Styles
+ * Controls, pickers, live preview workbench, and layout toggles.
+ */
+
+.settings-workbench {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.settings-main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.settings-card {
+  background-color: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-base);
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.settings-card-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--p-ink);
+  margin-bottom: 6px;
+}
+
+.settings-card-desc {
+  font-size: 14px;
+  color: var(--p-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* 1. Presets Selector Grid */
+.presets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.preset-card {
+  background-color: var(--p-bg);
+  border: 1.5px solid var(--p-border);
+  border-radius: var(--r-base);
+  padding: 16px;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preset-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--p-accent);
+}
+
+.preset-card.is-active {
+  border-color: var(--p-accent);
+  box-shadow: 0 0 0 2px var(--p-accent-muted);
+}
+
+.preset-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preset-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--p-ink);
+}
+
+.preset-swatches {
+  display: flex;
+  gap: 4px;
+}
+
+.swatch-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.preset-desc {
+  font-size: 12px;
+  color: var(--p-muted);
+  line-height: 1.4;
+}
+
+/* 2. Color Tokens Grid */
+.tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.token-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.token-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--p-muted);
+  text-transform: uppercase;
+}
+
+.token-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-sm);
+  padding: 4px 8px;
+}
+
+.color-box {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+.color-box::-webkit-color-swatch-wrapper { padding: 0; }
+.color-box::-webkit-color-swatch { border: 1px solid rgba(0,0,0,0.15); border-radius: 50%; }
+
+.color-hex {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--p-ink);
+}
+
+/* 3. Controls & Sliders */
+.controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-sm);
+}
+
+.control-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--p-ink);
+  font-weight: 500;
+}
+
+.control-sub {
+  font-size: 11px;
+  color: var(--p-muted);
+  font-family: var(--font-mono);
+}
+
+.select-input {
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--p-ink);
+  outline: none;
+}
+
+.slider-input {
+  width: 100%;
+  accent-color: var(--p-accent);
+}
+
+/* 4. Section Layout Toggles */
+.sections-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.section-toggle-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.section-toggle-box:hover {
+  border-color: var(--p-accent);
+}
+
+/* 5. Sticky Live Preview Side Panel */
+.preview-sticky-panel {
+  position: sticky;
+  top: 96px;
+  background-color: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-base);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--p-border);
+  padding-bottom: 12px;
+}
+
+.preview-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--p-muted);
+}
+
+.preview-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background-color: var(--p-accent-muted);
+  color: var(--p-accent);
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+}
+
+.preview-card-mock {
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-base);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all var(--duration-base);
+}
+
+.preview-mock-h {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: var(--display-weight);
+  color: var(--p-ink);
+}
+
+.preview-mock-p {
+  font-size: 13px;
+  color: var(--p-muted);
+  line-height: 1.5;
+}
+
+.preview-mock-btns {
+  display: flex;
+  gap: 8px;
+}
+
+/* 6. JSON Config Area */
+.json-area {
+  width: 100%;
+  height: 140px;
+  background-color: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--r-sm);
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--p-ink);
+  outline: none;
+  resize: vertical;
+}
+
+/* Toast */
+.settings-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: var(--p-ink);
+  color: var(--p-bg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: var(--r-base);
+  box-shadow: var(--shadow-floating);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all var(--duration-base) var(--ease-out);
+  z-index: 999;
+}
+
+.settings-toast.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 960px) {
+  .settings-workbench {
+    grid-template-columns: 1fr;
+  }
+  .preview-sticky-panel {
+    position: static;
+  }
+}

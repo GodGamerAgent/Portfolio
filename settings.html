@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-ground="sand" data-buttons="solid" data-motion>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Granular Customization Studio — Srikanth Portfolio</title>
+  <meta name="description" content="Granular customization studio and modular engine for Srikanth's developer portfolio. Personalize design tokens, typography, audio synthesis, canvas dynamics, and layout sections.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=DM+Mono:wght@400;500&family=Figtree:wght@400..600&family=Funnel+Display:wght@400..700&family=Funnel+Sans:wght@400..600&family=Urbanist:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/system.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout-portfolio.css">
+  <link rel="stylesheet" href="css/dynamic-hero.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand-link" aria-label="Return to Portfolio">
+        <span class="brand-avatar">←</span>
+        <span>Back to Portfolio</span>
+      </a>
+
+      <div class="nav-status-pill">
+        <span class="status-dot"></span>
+        <span>Customization Engine: Active</span>
+      </div>
+
+      <div class="nav-actions">
+        <button id="btn-reset-defaults" class="btn btn-secondary" type="button" style="padding:6px 12px;font-size:12px;">
+          Reset to Defaults
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top:40px;padding-bottom:80px;">
+    <div class="sec-header">
+      <span class="sec-category">Control Center</span>
+      <h1 class="sec-title">Granular Customization Studio</h1>
+      <p class="sec-desc">
+        Tweak every design token, dynamic interaction, audio synthesizer parameter, and section visibility. All modifications are synchronized live and persisted across the entire website.
+      </p>
+    </div>
+
+    <div class="settings-workbench">
+      <!-- Main Controls Column -->
+      <div class="settings-main-panel">
+
+        <!-- 1. CREATIVE DIRECTION PRESETS -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">1. Creative Direction Presets</h2>
+          <p class="settings-card-desc">
+            Instantly switch between the three dealt design directions or customize your own baseline.
+          </p>
+
+          <div class="presets-grid">
+            <!-- Preset 1 -->
+            <div class="preset-card is-active" data-preset="canvas-studio">
+              <div class="preset-header">
+                <span class="preset-title">Direction 1: Studio Canvas</span>
+                <div class="preset-swatches">
+                  <span class="swatch-circle" style="background:#ffffff;"></span>
+                  <span class="swatch-circle" style="background:#1a4be0;"></span>
+                </div>
+              </div>
+              <p class="preset-desc">
+                Crisp light canvas inspired by Onlines &amp; Figma. Electric blue accents, dot-matrix, and multiplayer peer cursors.
+              </p>
+            </div>
+
+            <!-- Preset 2 -->
+            <div class="preset-card" data-preset="ai-kernel">
+              <div class="preset-header">
+                <span class="preset-title">Direction 2: AI Lab Console</span>
+                <div class="preset-swatches">
+                  <span class="swatch-circle" style="background:#121417;"></span>
+                  <span class="swatch-circle" style="background:#ff4a1f;"></span>
+                </div>
+              </div>
+              <p class="preset-desc">
+                Dark graphite terminal styling with safety orange telemetry, sharp technical borders, and blueprint grid.
+              </p>
+            </div>
+
+            <!-- Preset 3 -->
+            <div class="preset-card" data-preset="cybernetic-matrix">
+              <div class="preset-header">
+                <span class="preset-title">Direction 3: Cybernetic</span>
+                <div class="preset-swatches">
+                  <span class="swatch-circle" style="background:#0a0d0a;"></span>
+                  <span class="swatch-circle" style="background:#c6f19d;"></span>
+                </div>
+              </div>
+              <p class="preset-desc">
+                Obsidian depth with luminous acid lime, Bricolage Grotesque typography, and organic halftone ripples.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. GRANULAR COLOR TOKENS -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">2. Color Token Tuner</h2>
+          <p class="settings-card-desc">
+            Granular hex color inputs that immediately recompute CSS custom properties across all elements.
+          </p>
+
+          <div class="tokens-grid">
+            <div class="token-picker" data-token="bg">
+              <label class="token-label" for="col-bg">Page Background</label>
+              <div class="token-input-row">
+                <input id="col-bg" type="color" class="color-box" value="#ffffff">
+                <input type="text" class="color-hex" value="#ffffff">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="surface">
+              <label class="token-label" for="col-surface">Card Surface</label>
+              <div class="token-input-row">
+                <input id="col-surface" type="color" class="color-box" value="#f6f7f9">
+                <input type="text" class="color-hex" value="#f6f7f9">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="ink">
+              <label class="token-label" for="col-ink">Primary Text (Ink)</label>
+              <div class="token-input-row">
+                <input id="col-ink" type="color" class="color-box" value="#111318">
+                <input type="text" class="color-hex" value="#111318">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="muted">
+              <label class="token-label" for="col-muted">Muted Text</label>
+              <div class="token-input-row">
+                <input id="col-muted" type="color" class="color-box" value="#5e6573">
+                <input type="text" class="color-hex" value="#5e6573">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="accent">
+              <label class="token-label" for="col-accent">Accent &amp; Action</label>
+              <div class="token-input-row">
+                <input id="col-accent" type="color" class="color-box" value="#1a4be0">
+                <input type="text" class="color-hex" value="#1a4be0">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="border">
+              <label class="token-label" for="col-border">Border Lines</label>
+              <div class="token-input-row">
+                <input id="col-border" type="color" class="color-box" value="#e4e7ec">
+                <input type="text" class="color-hex" value="#e4e7ec">
+              </div>
+            </div>
+
+            <div class="token-picker" data-token="codeBg">
+              <label class="token-label" for="col-codebg">Terminal Background</label>
+              <div class="token-input-row">
+                <input id="col-codebg" type="color" class="color-box" value="#13151b">
+                <input type="text" class="color-hex" value="#13151b">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. TYPOGRAPHY & RADIUS -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">3. Typography &amp; Corner Radii</h2>
+          <p class="settings-card-desc">
+            Pairings vetted by the design-taste skill, plus hardware-sharp to pill-rounded corner profiles.
+          </p>
+
+          <div class="controls-grid">
+            <div class="control-item">
+              <label class="control-label" for="setting-font-pairing">Font Pairing</label>
+              <select id="setting-font-pairing" class="select-input">
+                <option value="funnel">Funnel Display / Funnel Sans + DM Mono (Neo-Grotesque)</option>
+                <option value="urbanist">Urbanist + DM Mono (Geometric Technical)</option>
+                <option value="bricolage">Bricolage Grotesque / Figtree + DM Mono (Warm Editorial)</option>
+                <option value="mono">DM Mono Pure (Developer Terminal)</option>
+              </select>
+            </div>
+
+            <div class="control-item">
+              <span class="control-label">Corner Radius</span>
+              <div style="display:flex;gap:16px;margin-top:6px;">
+                <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
+                  <input type="radio" name="setting-radius" value="sharp"> Sharp (0px)
+                </label>
+                <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
+                  <input type="radio" name="setting-radius" value="soft" checked> Soft (6px)
+                </label>
+                <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;">
+                  <input type="radio" name="setting-radius" value="round"> Round (16px)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. CANVAS GRID & DYNAMICS -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">4. Canvas Grid &amp; Halftone Dynamics</h2>
+          <p class="settings-card-desc">
+            Configure the interactive background canvas inspired by Onlines grilla-celdas and shader-halftone.
+          </p>
+
+          <div class="controls-grid">
+            <div class="control-item">
+              <label class="control-label" for="setting-grid-style">Grid Pattern Style</label>
+              <select id="setting-grid-style" class="select-input">
+                <option value="dot-matrix">Dot Matrix (Interactive hover proximity)</option>
+                <option value="blueprint">Blueprint Grid (Architectural crosshairs)</option>
+                <option value="halftone">Halftone Wave (Shader ripple dynamics)</option>
+                <option value="none">None (Clean Minimal Flat)</option>
+              </select>
+            </div>
+
+            <div class="control-item">
+              <div style="display:flex;justify-content:space-between;">
+                <label class="control-label" for="setting-grid-density">Grid Density</label>
+                <span id="density-value" class="control-sub">24px</span>
+              </div>
+              <input id="setting-grid-density" type="range" class="slider-input" min="14" max="44" step="2" value="24">
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Cursor Spotlight Aura</div>
+                <div class="control-sub">Illuminates nearby cells with an accent glow</div>
+              </div>
+              <input id="setting-canvas-spotlight" type="checkbox" checked>
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. MULTIPLAYER CURSORS & FIGMA SELECTION -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">5. Multiplayer Cursors &amp; Figma Elements</h2>
+          <p class="settings-card-desc">
+            Control the real-time collaborator cursors, draggable Figma bounding box, and live code typing.
+          </p>
+
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Simulate Multiplayer Peer Cursors</div>
+                <div class="control-sub">Srikanth, NST AI Mentor, and AI Copilot moving on canvas</div>
+              </div>
+              <input id="setting-cursors" type="checkbox" checked>
+            </label>
+
+            <div class="control-item-row">
+              <div>
+                <div class="control-label">Active Peer Count</div>
+                <div class="control-sub">Number of simultaneous collaborator cursors</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;width:180px;">
+                <input id="setting-cursor-count" type="range" class="slider-input" min="1" max="5" value="3">
+                <span id="cursor-count-value" class="control-sub" style="font-weight:600;">3</span>
+              </div>
+            </div>
+
+            <div class="control-item-row">
+              <div>
+                <div class="control-label">Cursor Velocity</div>
+                <div class="control-sub">Speed multiplier for trajectory splines</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;width:180px;">
+                <input id="setting-cursor-speed" type="range" class="slider-input" min="0.5" max="2.5" step="0.1" value="1.0">
+                <span id="cursor-speed-value" class="control-sub" style="font-weight:600;">1.0x</span>
+              </div>
+            </div>
+
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Figma Bounding Box with Resize Handles</div>
+                <div class="control-sub">Shows HUD coordinates and corner anchors on hero window</div>
+              </div>
+              <input id="setting-selection-box" type="checkbox" checked>
+            </label>
+
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Enable Free Dragging on Frame</div>
+                <div class="control-sub">Allows visitors to reposition the hero code frame freely</div>
+              </div>
+              <input id="setting-selection-drag" type="checkbox" checked>
+            </label>
+
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Live Code Typing Loop</div>
+                <div class="control-sub">Simulates character-by-character coding in the editor</div>
+              </div>
+              <input id="setting-typing-anim" type="checkbox" checked>
+            </label>
+
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Floating Badges Parallax</div>
+                <div class="control-sub">Tilts tool badges in response to pointer displacement</div>
+              </div>
+              <input id="setting-float-badges" type="checkbox" checked>
+            </label>
+          </div>
+        </div>
+
+        <!-- 6. WEB AUDIO SYNTHESIZER -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">6. Tactile Web Audio Synthesizer</h2>
+          <p class="settings-card-desc">
+            Synthesized procedural audio effects (clicks, switches, terminal chirps) via the Web Audio API.
+          </p>
+
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Enable Audio Feedback</div>
+                <div class="control-sub">Plays subtle transients on clicks, toggles, and commands</div>
+              </div>
+              <input id="setting-sound-enabled" type="checkbox" checked>
+            </label>
+
+            <div class="control-item-row">
+              <div>
+                <div class="control-label">Master Synthesizer Volume</div>
+                <div class="control-sub">Adjust overall decibel gain</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;width:180px;">
+                <input id="setting-sound-vol" type="range" class="slider-input" min="0" max="1" step="0.05" value="0.25">
+                <span id="volume-value" class="control-sub" style="font-weight:600;">25%</span>
+              </div>
+            </div>
+
+            <label class="control-item-row" style="cursor:pointer;">
+              <div>
+                <div class="control-label">Typing Keystroke Clicks</div>
+                <div class="control-sub">Synthesizes faint mechanical keystroke sound on code typing</div>
+              </div>
+              <input id="setting-typing-clicks" type="checkbox" checked>
+            </label>
+          </div>
+        </div>
+
+        <!-- 7. MODULAR SECTION LAYOUT MANAGER -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">7. Modular Section Layout Manager</h2>
+          <p class="settings-card-desc">
+            Dynamically toggle visibility for any section of the website to build a custom portfolio layout.
+          </p>
+
+          <div class="sections-toggle-grid">
+            <label class="section-toggle-box" data-sec="hero">
+              <span class="control-label">Hero &amp; Canvas</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="statement">
+              <span class="control-label">Manifesto Statement</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="projects">
+              <span class="control-label">Selected Projects</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="stack">
+              <span class="control-label">Tech Stack Matrix</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="nst_lab">
+              <span class="control-label">NST AI Lab</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="terminal">
+              <span class="control-label">Terminal Playground</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="metrics">
+              <span class="control-label">Live Status Telemetry</span>
+              <input type="checkbox" checked>
+            </label>
+
+            <label class="section-toggle-box" data-sec="contact">
+              <span class="control-label">Contact &amp; Transmit</span>
+              <input type="checkbox" checked>
+            </label>
+          </div>
+        </div>
+
+        <!-- 8. CONFIGURATION PORTABILITY (JSON) -->
+        <div class="settings-card">
+          <h2 class="settings-card-title">8. Configuration Portability (JSON)</h2>
+          <p class="settings-card-desc">
+            Export your customized portfolio state as a portable JSON snapshot or import an existing configuration.
+          </p>
+
+          <textarea id="setting-json-area" class="json-area" placeholder="Click 'Export Configuration' to generate JSON snapshot, or paste configuration JSON here to import..."></textarea>
+
+          <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+            <button id="btn-export-json" class="btn btn-secondary" type="button">
+              Export Configuration
+            </button>
+            <button id="btn-import-json" class="btn btn-primary" type="button">
+              Import &amp; Apply JSON
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Sticky Live Interactive Preview Panel -->
+      <aside class="preview-sticky-panel">
+        <div class="preview-header">
+          <span class="preview-title">Live Preview HUD</span>
+          <span id="preview-tag" class="preview-chip">Preset: CANVAS-STUDIO</span>
+        </div>
+
+        <div class="preview-card-mock">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="status-dot"></span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--p-muted);">NST Active</span>
+          </div>
+
+          <h3 class="preview-mock-h">Srikanth</h3>
+          <p class="preview-mock-p">
+            Computer Science &amp; AI Student at Newton School of Technology. This card demonstrates your active typography, colors, and radii.
+          </p>
+
+          <div class="preview-mock-btns">
+            <button class="btn btn-primary" type="button" style="padding:8px 14px;font-size:12px;">
+              Primary Action
+            </button>
+            <button class="btn btn-secondary" type="button" style="padding:8px 14px;font-size:12px;">
+              Secondary
+            </button>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--p-muted);line-height:1.5;">
+          All modifications apply instantaneously to this preview and are stored in <code style="color:var(--p-accent);">localStorage</code> for <a href="index.html" style="color:var(--p-accent);text-decoration:underline;">index.html</a>.
+        </div>
+
+        <a href="index.html" class="btn btn-primary" style="width:100%;text-align:center;">
+          Open Portfolio View →
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-credit">
+        Granular Customization Studio · Srikanth (Newton School of Technology)
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html" class="footer-link">Main Portfolio</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div id="settings-toast" class="settings-toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/settings-store.js"></script>
+  <script src="js/sound-fx.js"></script>
+  <script src="js/settings-app.js"></script>
+</body>
+</html>
