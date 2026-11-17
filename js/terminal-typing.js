@@ -7,40 +7,40 @@
   'use strict';
 
   var SNIPPETS = {
-    typescript: [
-      '// NST AI Lab — Agent Orchestrator',
-      'import { AgentEngine, GraphRAG } from "@nst/core";',
+    python: [
+      '# Quorum: meeting notes that stay on this machine',
+      'from intelligence_engine import generate_post_meeting_synthesis',
       '',
-      'export async function dispatchTask(prompt: string) {',
-      '  const graph = new GraphRAG({ maxDepth: 4 });',
-      '  const agent = new AgentEngine({',
-      '    model: "gemini-3.8-flash",',
-      '    telemetry: true,',
-      '    stream: true',
-      '  });',
+      'LM_STUDIO = "http://localhost:1234/v1"',
+      'MODEL = "google/gemma-4-26b-a4b-qat"',
       '',
-      '  const context = await graph.retrieve(prompt);',
-      '  return agent.execute({ prompt, context });',
-      '}'
+      'def summarise(transcript: str) -> dict:',
+      '    notes = generate_post_meeting_synthesis(',
+      '        transcript, base_url=LM_STUDIO, model=MODEL',
+      '    )',
+      '    return {',
+      '        "decisions": notes["decisions"],',
+      '        "action_items": notes["action_items"],',
+      '    }'
     ].join('\n'),
 
-    python: [
-      '# Newton School of Technology — Model Inspector',
-      'import torch',
-      'from nst_lab import AttentionAnalyzer',
+    kotlin: [
+      '// I Can\'t Wake Up!: an alarm you have to think to stop',
+      'fun scheduleAlarm(context: Context, alarm: Alarm) {',
+      '    val manager = context.getSystemService(AlarmManager::class.java)',
+      '    manager.setExactAndAllowWhileIdle(',
+      '        AlarmManager.RTC_WAKEUP,',
+      '        alarm.triggerAtMillis,',
+      '        alarm.pendingIntent(context)',
+      '    )',
+      '}',
       '',
-      'def inspect_activations(weights_path: str):',
-      '    device = "cuda" if torch.cuda.is_available() else "cpu"',
-      '    model = torch.load(weights_path, map_location=device)',
-      '    analyzer = AttentionAnalyzer(model, heads=32)',
-      '    metrics = analyzer.evaluate_entropy(tokens=2048)',
-      '    print(f"✓ Cluster Latency: {metrics.latency_ms:.2f}ms")',
-      '    return metrics'
+      'val challenges = listOf(Math, MemoryMatch, SimonSays, QrScan)'
     ].join('\n')
   };
 
+  var currentSnippetKey = 'python';
   var heroTypingIndex = 0;
-  var currentSnippetKey = 'typescript';
   var isTyping = false;
   var typingTimeout = null;
 
@@ -189,45 +189,43 @@
       case 'help':
         resp.innerHTML = [
           'Available commands:',
-          '  <span class="term-cyan">projects</span>    — List featured engineering projects',
-          '  <span class="term-cyan">stack</span>       — View technical proficiencies',
-          '  <span class="term-cyan">nst</span>         — Newton School of Technology details & AI Lab',
-          '  <span class="term-cyan">bio</span>         — Read Srikanth\'s story & focus',
+          '  <span class="term-cyan">projects</span>    — The six repositories',
+          '  <span class="term-cyan">stack</span>       — Languages and tools',
+          '  <span class="term-cyan">nst</span>         — Why Newton School of Technology',
+          '  <span class="term-cyan">bio</span>         — Who I am',
           '  <span class="term-cyan">ai</span>          — Toggle interactive AI Mode switch',
           '  <span class="term-cyan">sound</span>       — Toggle tactile Web Audio synth',
-          '  <span class="term-cyan">contact</span>     — Display contact endpoints',
+          '  <span class="term-cyan">contact</span>     — Where to find me',
           '  <span class="term-cyan">clear</span>       — Wipe the terminal screen'
         ].join('<br>');
         break;
 
       case 'projects':
         resp.innerHTML = [
-          '1. <strong class="term-green">OmniGraph AI</strong> — Graph-RAG Multi-Agent Orchestrator (FastAPI, Neo4j, LangGraph)',
-          '2. <strong class="term-green">HyperCanvas WebGL</strong> — GPU-Accelerated Node Graph Physics Engine (Three.js, WebGL)',
-          '3. <strong class="term-green">NST Pulse</strong> — Real-time GPU Lab Telemetry & Distributed Experiment Tracker (Go, PyTorch, Redis)',
-          '4. <strong class="term-green">LatentDiff</strong> — Latent Diffusion Activation Heatmap Inspector (PyTorch, React, Python)'
+          '1. <strong class="term-green">Quorum</strong>: private meeting notes, Whisper and Gemma 4 on-device (TypeScript, Python)',
+          '2. <strong class="term-green">DocDrift AI</strong>: finds stale READMEs and opens a fix as a pull request (TypeScript)',
+          '3. <strong class="term-green">I Can\'t Wake Up!</strong>: an Android alarm you cannot cheat (Kotlin)',
+          '4. <strong class="term-green">Voice Assist AI</strong>: dictation and tone-aware replies in any Android app (Kotlin)',
+          '5. <strong class="term-green">Wardrobe Brainy</strong>: an MCP server for your wardrobe (Python, SQLite)',
+          '6. <strong class="term-green">MusicDownloaderCLI</strong>: hi-res audio from a pasted link (Python)'
         ].join('<br>');
         break;
 
       case 'stack':
         resp.innerHTML = [
-          '<span class="term-cyan">Languages:</span> TypeScript, Python, C++, SQL, Go, Rust',
-          '<span class="term-cyan">Frontend:</span> React, Next.js, WebGL, Three.js, GSAP, Tailwind CSS',
-          '<span class="term-cyan">AI & Systems:</span> PyTorch, LangChain/LangGraph, Hugging Face, TensorRT, Docker, PostgreSQL'
+          '<span class="term-cyan">Languages:</span> Kotlin 51%, TypeScript 31%, Python 12%, JavaScript 3%',
+          '<span class="term-cyan">Android:</span> Jetpack Compose, Room, accessibility and overlay services',
+          '<span class="term-cyan">AI:</span> Gemma 4 in LM Studio, Whisper, MCP with FastMCP',
+          '<span class="term-cyan">Web:</span> Next.js, FastAPI, SeleniumBase'
         ].join('<br>');
         break;
 
       case 'nst':
-        resp.innerHTML = [
-          '<strong class="term-cyan">Newton School of Technology (NST)</strong>',
-          'Program: B.Tech Computer Science & Artificial Intelligence',
-          'Focus: Distributed Systems, Autonomous Agent Architectures & LLM Inference',
-          'Lab: NST Deep Learning & High-Performance Computing Cluster'
-        ].join('<br>');
+        resp.innerHTML = 'Newton School of Technology: where I study Computer Science and AI, and where I came to learn by building instead of by rote.';
         break;
 
       case 'bio':
-        resp.innerHTML = 'Srikanth is a developer & AI engineer studying at Newton School of Technology. Blends frontend craft, interactive graphics, and AI agent orchestration to build software with substance.';
+        resp.innerHTML = 'Srikanth Nagendran. I learn by building things, getting stuck and working out the fix. Life has had ups and downs; I keep the balance net positive and live without regrets.';
         break;
 
       case 'ai':
@@ -250,12 +248,7 @@
         break;
 
       case 'contact':
-        resp.innerHTML = [
-          'Email: <a href="mailto:srikanth@example.com" class="term-link">srikanth@example.com</a>',
-          'GitHub: <a href="https://github.com" target="_blank" rel="noopener" class="term-link">github.com/srikanth-nst</a>',
-          'LinkedIn: <a href="https://linkedin.com" target="_blank" rel="noopener" class="term-link">linkedin.com/in/srikanth</a>',
-          'Location: Newton School of Technology Campus'
-        ].join('<br>');
+        resp.innerHTML = 'GitHub: <a href="https://github.com/GodGamerAgent" target="_blank" rel="noopener" class="term-link">github.com/GodGamerAgent</a>';
         break;
 
       case 'clear':

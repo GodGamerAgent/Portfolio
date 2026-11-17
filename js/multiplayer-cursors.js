@@ -120,6 +120,12 @@
         c.targetY = cy + Math.cos(c.t * 1.4) * ry + Math.sin(c.t * 0.6) * (ry * 0.2);
       }
 
+      // keep the whole cursor and its name tag inside the layer, never clipped at an edge
+      var maxX = Math.max(0, w - c.el.offsetWidth - 8);
+      var maxY = Math.max(0, h - c.el.offsetHeight - 8);
+      c.targetX = Math.min(Math.max(c.targetX, 8), maxX);
+      c.targetY = Math.min(Math.max(c.targetY, 8), maxY);
+
       // Smooth lerp
       c.x += (c.targetX - c.x) * 0.08;
       c.y += (c.targetY - c.y) * 0.08;

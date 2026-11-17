@@ -1,3 +1,4 @@
 .DS_Store
 *.log
-.taste-skill/chrome-*
+# local output of the design checker (screenshots, logs, build state)
+.taste-skill/

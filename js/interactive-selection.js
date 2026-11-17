@@ -136,7 +136,10 @@
     var x = Math.round(rect.left);
     var y = Math.round(rect.top);
 
-    hudEl.textContent = 'x: ' + x + '  y: ' + y + ' · ' + w + ' × ' + h + ' · FRAME: SRIKANTH_HERO';
+    // a narrow frame (a phone) drops the position and frame name so the label stays inside it
+    hudEl.textContent = w < 420
+      ? w + ' × ' + h
+      : 'x: ' + x + '  y: ' + y + ' · ' + w + ' × ' + h + ' · FRAME: SRIKANTH_HERO';
   }
 
   document.addEventListener('DOMContentLoaded', init);

@@ -4,12 +4,8 @@
  */
 
 .sec-hero {
+  /* height and padding: system.css (.hero is the first screen, under the fixed header) */
   position: relative;
-  min-height: calc(100vh - 64px);
-  display: flex;
-  align-items: center;
-  padding-top: clamp(40px, 6vh, 80px);
-  padding-bottom: clamp(40px, 6vh, 80px);
   overflow: hidden;
 }
 
@@ -93,9 +89,9 @@
   position: relative;
   z-index: 5;
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   gap: clamp(32px, 5vw, 64px);
-  align-items: center;
+  align-items: start;
   width: 100%;
 }
 
@@ -184,6 +180,9 @@
   line-height: 1.05;
   color: var(--p-ink);
   margin-bottom: 20px;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: normal;
 }
 
 .hero-lead {
@@ -201,13 +200,20 @@
 }
 
 .hero-proof-line {
+  list-style: none;
   margin-top: 28px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 6px 12px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--p-muted);
+}
+
+.hero-proof-item + .hero-proof-item::before {
+  content: "·";
+  margin-right: 12px;
 }
 
 .hero-proof-item {
@@ -220,10 +226,9 @@
 .hero-canvas-art {
   position: relative;
   width: 100%;
-  min-height: 480px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-top: 26px; /* room for the frame's size tag */
 }
 
 /* Figma Selection Bounding Box */
@@ -366,7 +371,7 @@
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.6;
-  min-height: 220px;
+  min-height: 300px;
   white-space: pre-wrap;
   word-break: break-all;
   position: relative;
@@ -426,9 +431,15 @@
 .badge-nst { top: 55%; right: -25px; }
 
 /* Responsive */
+/* peer cursors roam the visual column only, never over the headline and lead */
+@media (min-width: 961px) {
+  .multiplayer-layer { left: 50%; width: 50%; }
+}
+
 @media (max-width: 960px) {
+  .multiplayer-layer { display: none; }
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 40px;
   }
   .hero-text {
@@ -437,4 +448,26 @@
   .badge-nst {
     right: 0;
   }
+}
+
+/* phone: floating badges would sit on the code, so they rest; the window's controls are thumb-sized */
+@media (max-width: 639px) {
+  .float-badge { display: none; }
+  .window-header { min-height: 56px; }
+  .window-tabs { gap: 4px; }
+  .code-lang-tab,
+  .code-run-btn { min-height: 44px; display: inline-flex; align-items: center; }
+  .code-run-btn { margin-left: 8px; }
+}
+
+/* phone: the code window takes what the first screen leaves under the words */
+@media (max-width: 639px) {
+  .hero-canvas-art { padding-top: 22px; }
+  .window-body { min-height: 0; height: 100px; overflow: hidden; font-size: 12px; }
+  .hero-lead { margin-bottom: 24px; }
+  .hero-proof-line { margin-top: 20px; }
+  .hero-h1 { margin-bottom: 16px; font-size: 34px; }
+  .hero-badge-row { display: none; }
+  .hero-proof-line { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .hero-proof-item + .hero-proof-item::before { content: none; }
 }

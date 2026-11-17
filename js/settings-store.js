@@ -18,7 +18,7 @@
         surface: '#f6f7f9',
         surfaceHover: '#edeef2',
         ink: '#111318',
-        muted: '#5e6573',
+        muted: '#454c59',
         accent: '#1a4be0',
         accentMuted: '#e8eeff',
         accentInk: '#ffffff',
@@ -46,7 +46,7 @@
         surface: '#1a1d22',
         surfaceHover: '#23272e',
         ink: '#f0f2f5',
-        muted: '#8b949e',
+        muted: '#aab2bd',
         accent: '#ff4a1f',
         accentMuted: '#3d1c14',
         accentInk: '#ffffff',
@@ -74,7 +74,7 @@
         surface: '#121713',
         surfaceHover: '#1a221b',
         ink: '#f5faf5',
-        muted: '#829283',
+        muted: '#a8b8a9',
         accent: '#c6f19d',
         accentMuted: '#1f2e1b',
         accentInk: '#0a0d0a',
@@ -146,6 +146,9 @@
       if (raw) {
         var parsed = JSON.parse(raw);
         state = deepMerge(Object.assign({}, DEFAULT_CONFIG), parsed);
+        // saved before the contrast pass: lift the old greys to the readable ones
+        var LIFT = { '#5e6573': '#454c59', '#8b949e': '#aab2bd', '#829283': '#a8b8a9' };
+        if (state.tokens && LIFT[state.tokens.muted]) state.tokens.muted = LIFT[state.tokens.muted];
       }
     } catch (e) {
       console.warn('Failed to parse portfolio settings, using defaults.', e);

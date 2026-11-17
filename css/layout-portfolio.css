@@ -30,24 +30,8 @@ body {
   transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
 }
 
-/* Equal Edge Container */
-.wrap {
-  width: 100%;
-  max-width: var(--wrap-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--wrap-pad);
-  padding-right: var(--wrap-pad);
-}
-
-/* Sections */
-main > section {
-  width: 100%;
-  position: relative;
-  padding-top: var(--section-pad-y);
-  padding-bottom: var(--section-pad-y);
-  border-bottom: 1px solid var(--p-border);
-}
+/* The grid (.wrap) and the section rhythm (one or two screens, --padt / --padb) come from
+   assets/system.css; this file only styles the page's own parts. */
 
 /* Section Header Structure */
 .sec-header {
@@ -70,7 +54,7 @@ main > section {
 
 .sec-title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.8vw, 44px);
+  font-size: var(--t-h2);
   font-weight: var(--display-weight);
   letter-spacing: var(--display-tracking);
   line-height: 1.15;
@@ -78,10 +62,11 @@ main > section {
 }
 
 .sec-desc {
-  font-size: clamp(16px, 1.3vw, 18px);
+  font-size: var(--t-lead);
   color: var(--p-muted);
   margin-top: 12px;
   line-height: 1.6;
+  max-width: 62ch;
 }
 
 /* ---------------- Navigation ---------------- */
@@ -98,10 +83,21 @@ main > section {
 }
 
 .nav-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: calc(var(--nav) - 1px);
+}
+
+/* the home page: the header is fixed over the hero, --nav tall, so every section starts on a whole screen */
+.home .site-nav { position: fixed; left: 0; right: 0; top: 0; }
+
+/* one visible focus ring for every control */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--p-accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
 }
 
 .brand-link {
@@ -120,7 +116,7 @@ main > section {
   width: 32px;
   height: 32px;
   border-radius: var(--r-base);
-  background: linear-gradient(135deg, var(--p-accent), #00d2ff);
+  background: var(--p-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,4 +318,18 @@ main > section {
   .nav-links {
     display: none;
   }
+}
+
+/* tablet: the status pill gives way so links and actions never crowd */
+@media (max-width: 1100px) {
+  .nav-status-pill { display: none; }
+}
+
+/* phone: settings collapses to its icon, every control 44px */
+@media (max-width: 520px) {
+  .nav-actions { gap: 8px; }
+  .nav-icon-btn { width: 44px; height: 44px; }
+  .nav-settings-link { min-height: 44px; padding: 0 12px; }
+  .nav-settings-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .brand-link { min-height: 44px; }
 }
